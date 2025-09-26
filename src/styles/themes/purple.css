@@ -1,0 +1,17 @@
+/* purple.css - 紫色主题颜色变量（作用于 .theme-purple） */
+.theme-purple {
+  --color-primary: #7c3aed; /* 紫 */
+  --color-secondary: #64748b;
+  --color-background: #fbf7ff;
+  --color-surface: #f6efff;
+  --color-surface-subtle: #efe7ff;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #e9d5ff;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-on-primary: #ffffff;
+}
+
+

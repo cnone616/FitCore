@@ -1,0 +1,17 @@
+/* blue.css - 蓝色主题颜色变量（作用于 .theme-blue） */
+.theme-blue {
+  --color-primary: #2563eb; /* 深蓝 */
+  --color-secondary: #64748b;
+  --color-background: #f8fbff;
+  --color-surface: #f1f5ff;
+  --color-surface-subtle: #e9f0ff;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #dbeafe;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-on-primary: #ffffff;
+}
+
+
