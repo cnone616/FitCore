@@ -1,0 +1,16 @@
+/* 主题样式聚合入口
+ * - base.css: 基础样式与默认(浅色)变量，避免首屏闪烁
+ * - light.css: 浅色主题变量（:root）
+ * - dark.css: 深色主题变量（.theme-dark）
+ * - blue.css: 蓝色主题变量（.theme-blue）
+ * - green.css: 绿色主题变量（.theme-green）
+ * - purple.css: 紫色主题变量（.theme-purple）
+ */
+@import './base.css';
+@import './light.css';
+@import './dark.css';
+@import './blue.css';
+@import './green.css';
+@import './purple.css';
+
+

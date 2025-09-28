@@ -1,0 +1,19 @@
+/* light.css - 浅色主题颜色变量（作用于 :root） */
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-subtle: #f1f5f9;
+  --color-text: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-on-primary: #ffffff;
+  
+  /* 移除不再使用的定制文本变量，统一用 text-fg / text-fg-muted */
+}
+
+

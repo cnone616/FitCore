@@ -1,0 +1,17 @@
+/* green.css - 绿色主题颜色变量（作用于 .theme-green） */
+.theme-green {
+  --color-primary: #16a34a; /* 绿 */
+  --color-secondary: #64748b;
+  --color-background: #f7fff9;
+  --color-surface: #effcf3;
+  --color-surface-subtle: #e7f7ed;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #d1fae5;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-on-primary: #ffffff;
+}
+
+
