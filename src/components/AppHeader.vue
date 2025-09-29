@@ -20,9 +20,15 @@
           <div class="user-details">
             <div class="user-name" @click="toggleUserMenu">{{ userStore.currentUser?.name }}</div>
             <div v-if="showUserMenu" class="user-menu">
-              <router-link to="/user/data" class="menu-item" @click="closeUserMenu">📊 数据概览</router-link>
-              <router-link to="/user/settings" class="menu-item" @click="closeUserMenu">⚙️ 设置</router-link>
-              <button @click="logout" class="menu-item logout-btn">🚪 退出</button>
+              <router-link to="/user/data" class="menu-item" @click="closeUserMenu">
+                <i class="iconfont icon-data-view"></i> 数据概览
+              </router-link>
+              <router-link to="/user/settings" class="menu-item" @click="closeUserMenu">
+                <i class="iconfont icon-setting"></i> 设置
+              </router-link>
+              <button @click="logout" class="menu-item logout-btn">
+                <i class="iconfont icon-close"></i> 退出
+              </button>
             </div>
           </div>
         </div>
@@ -30,7 +36,7 @@
         <!-- 未登录状态 -->
         <div v-else class="login-section">
           <router-link to="/auth/login" class="login-btn">
-            👤 登录
+            <i class="iconfont icon-user"></i> 登录
           </router-link>
         </div>
       </div>

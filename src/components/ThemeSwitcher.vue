@@ -3,9 +3,7 @@
     <div class="theme-switcher-trigger" @click="toggleDropdown">
       <div class="theme-preview" :style="{ backgroundColor: theme.colors.primary }"></div>
       <span class="theme-name">{{ theme.displayName }}</span>
-      <svg class="dropdown-icon" :class="{ 'rotate-180': showDropdown }" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-      </svg>
+      <i class="iconfont icon-arrow-down dropdown-icon" :class="{ 'rotate-180': showDropdown }"></i>
     </div>
     
     <transition name="dropdown">
@@ -19,9 +17,7 @@
         >
           <div class="theme-preview" :style="{ backgroundColor: themeOption.colors.primary }"></div>
           <span class="theme-name">{{ themeOption.displayName }}</span>
-          <svg v-if="themeOption.name === currentTheme" class="check-icon" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
+          <i v-if="themeOption.name === currentTheme" class="iconfont icon-check check-icon"></i>
         </div>
       </div>
     </transition>
@@ -98,8 +94,7 @@ onUnmounted(() => {
 }
 
 .dropdown-icon {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
   color: var(--color-text-secondary);
   transition: transform 0.2s ease;
 }
@@ -149,9 +144,9 @@ onUnmounted(() => {
 }
 
 .check-icon {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1rem;
   margin-left: auto;
+  color: var(--color-primary);
 }
 
 /* 下拉动画 */

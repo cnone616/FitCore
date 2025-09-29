@@ -25,6 +25,7 @@ onMounted(() => {
 
 <style>
 @import '@/styles/themes/index.css';
+@import '@/styles/iconfont.css';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -38,10 +39,19 @@ onMounted(() => {
 
 .app-main {
   min-height: calc(100vh - 80px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .app-main.with-nav {
   min-height: calc(100vh - 80px);
   padding-top: 55px;
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 0 0.75rem;
+  }
 }
 </style>

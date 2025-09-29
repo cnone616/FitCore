@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2673665 */
+  src: url('@/assets/fonts/iconfont.woff2?t=1759112909746') format('woff2'),
+       url('@/assets/fonts/iconfont.woff?t=1759112909746') format('woff'),
+       url('@/assets/fonts/iconfont.ttf?t=1759112909746') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 常用图标 */
+.icon-setting:before {
+  content: "\e6d4";
+}
+
+.icon-user:before {
+  content: "\e6e0";
+}
+
+.icon-home:before {
+  content: "\e6e1";
+}
+
+.icon-menu:before {
+  content: "\e6e2";
+}
+
+.icon-search:before {
+  content: "\e6e3";
+}
+
+.icon-switch:before {
+  content: "\e6d3";
+}
+
+.icon-chart-bar:before {
+  content: "\e6e4";
+}
+
+.icon-chart-pie:before {
+  content: "\e6e5";
+}
+
+.icon-data-view:before {
+  content: "\e6e6";
+}
+
+.icon-training:before {
+  content: "\e6e7";
+}
+
+.icon-user-filling:before {
+  content: "\e6e8";
+}
+
+.icon-home-filling:before {
+  content: "\e6e9";
+}
+
+.icon-setting-filling:before {
+  content: "\e6ea";
+}
+
+.icon-switch-filling:before {
+  content: "\e6eb";
+}
+
+.icon-close:before {
+  content: "\e679";
+}
+
+.icon-arrow-down:before {
+  content: "\e66a";
+}
+
+.icon-check:before {
+  content: "\e67a";
+}
+
+.icon-success:before {
+  content: "\e6d1";
+}
+
+/* 图标尺寸变体 */
+.iconfont.icon-sm {
+  font-size: 12px;
+}
+
+.iconfont.icon-md {
+  font-size: 16px;
+}
+
+.iconfont.icon-lg {
+  font-size: 20px;
+}
+
+.iconfont.icon-xl {
+  font-size: 24px;
+}
+
+/* 图标颜色变体 */
+.iconfont.icon-primary {
+  color: var(--color-primary);
+}
+
+.iconfont.icon-secondary {
+  color: var(--color-text-secondary);
+}
+
+.iconfont.icon-success {
+  color: var(--color-success);
+}
+
+.iconfont.icon-warning {
+  color: var(--color-warning);
+}
+
+.iconfont.icon-error {
+  color: var(--color-error);
+}
