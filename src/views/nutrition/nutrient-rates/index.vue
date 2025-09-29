@@ -4,12 +4,10 @@
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-fg mb-4">📊 日常食物营养率</h1>
         <p class="text-lg text-fg-muted">常见食物的碳水/蛋白/脂肪占比与参考数据</p>
-        <div class="mt-4 max-w-2xl mx-auto">
-          <input
-            v-model.trim="keyword"
-            type="text"
+        <div class="mt-4">
+          <SearchInput
+            v-model="keyword"
             placeholder="搜索食物名称..."
-          class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-surface text-fg"
           />
         </div>
       </div>
@@ -156,6 +154,7 @@ import { ref, computed } from 'vue';
 import { carbData } from './carbData';
 import { proteinData } from './proteinData';
 import { fatData } from './fatData';
+import SearchInput from '@/components/SearchInput.vue';
 
 const keyword = ref<string>('');
 

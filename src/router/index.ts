@@ -75,6 +75,14 @@ const routes = [
     }
   },
   {
+    path: '/nutrition/food-nutrient-rate',
+    name: 'NutritionFoodNutrientRate',
+    component: () => import('@/views/nutrition/food-nutrient-rate/index.vue'),
+    meta: {
+      title: '分类食物营养率'
+    }
+  },
+  {
     path: '/nutrition/faq',
     name: 'NutritionFaq',
     component: () => import('@/views/nutrition/faq/index.vue'),
@@ -160,6 +168,38 @@ const routes = [
     component: () => import('@/views/anatomy/index.vue'),
     meta: {
       title: '解剖学习'
+    }
+  },
+  {
+    path: '/auth/login',
+    name: 'Login',
+    component: () => import('@/views/auth/login.vue'),
+    meta: {
+      title: '登录'
+    }
+  },
+  {
+    path: '/auth/register',
+    name: 'Register',
+    component: () => import('@/views/auth/register.vue'),
+    meta: {
+      title: '注册'
+    }
+  },
+  {
+    path: '/user/settings',
+    name: 'UserSettings',
+    component: () => import('@/views/user/settings.vue'),
+    meta: {
+      title: '用户设置'
+    }
+  },
+  {
+    path: '/user/data',
+    name: 'UserData',
+    component: () => import('@/views/user/data.vue'),
+    meta: {
+      title: '数据概览'
     }
   },
   {

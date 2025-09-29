@@ -36,7 +36,7 @@ const route = useRoute();
 const headerHeight = ref(80); // 默认高度
 const breadcrumbRef = ref<HTMLElement | null>(null);
 
-// 面包屑配置
+// 面包屑配置（保留层级关系）
 const breadcrumbConfig: Record<string, { name: string; icon: string; path?: string }> = {
   '/nutrition': { name: '饮食管理', icon: '🍎', path: '/nutrition' },
   '/nutrition/calculator': { name: '营养计算器', icon: '🧮' },
@@ -46,6 +46,7 @@ const breadcrumbConfig: Record<string, { name: string; icon: string; path?: stri
   '/nutrition/muscle-gain/:id': { name: '增肌方案详情', icon: '📋' },
   '/nutrition/cardio-calories': { name: '有氧增加饮食热量', icon: '🔥' },
   '/nutrition/nutrient-rates': { name: '日常食物营养率', icon: '📊' },
+  '/nutrition/food-nutrient-rate': { name: '分类食物营养率', icon: '📘' },
   '/nutrition/faq': { name: '问答汇总', icon: '❓' },
   '/nutrition/faq/:id': { name: '问答详情', icon: '📝' },
   '/nutrition/recipes': { name: '食谱推荐', icon: '🍽️' },
@@ -83,6 +84,10 @@ const breadcrumbConfig: Record<string, { name: string; icon: string; path?: stri
   '/anatomy/knowledge': { name: '解剖知识库', icon: '📚' },
   '/anatomy/models': { name: '3D模型', icon: '🎯' },
   
+  '/auth/login': { name: '登录', icon: '👤' },
+  '/auth/register': { name: '注册', icon: '📝' },
+  '/user/settings': { name: '用户设置', icon: '👤' },
+  '/user/data': { name: '数据概览', icon: '📊' },
   '/about': { name: '关于', icon: 'ℹ️' }
 };
 
@@ -91,14 +96,13 @@ const breadcrumbItems = computed(() => {
   
   // 如果是首页，不显示面包屑
   if (path === '/') {
-    return [];
+    return [] as Array<{ name: string; icon: string; path?: string }>;
   }
   
-  // 构建面包屑路径
-  const items = [];
+  // 构建面包屑路径（分段匹配）
+  const items: Array<{ name: string; icon: string; path?: string }> = [];
   const pathSegments = path.split('/').filter(segment => segment);
   
-  // 构建完整路径
   let currentPath = '';
   for (const segment of pathSegments) {
     currentPath += `/${segment}`;

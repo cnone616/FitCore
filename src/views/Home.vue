@@ -108,21 +108,18 @@
       </div>
 
     </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 
-const stats = ref({
-  nutritionTools: 6,
-  trainingPlans: 12,
-  stretchingExercises: 25,
-  anatomyModels: 8
-});
+const userStore = useUserStore();
 
-onMounted(() => {
-  // 模拟数据加载
+onMounted(async () => {
+  await userStore.init();
   console.log('FitCore 首页加载完成');
 });
 </script>

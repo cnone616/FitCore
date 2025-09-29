@@ -70,6 +70,30 @@
             </router-link>
           </div>
         </div>
+
+        <!-- 分类食物营养率（基于 data.ts 数据源） -->
+      <div class="bg-surface rounded-lg shadow-lg p-6">
+          <div class="text-center">
+            <div class="text-3xl mb-4">📘</div>
+            <h3 class="text-xl font-semibold mb-2 nutrition-center-item-h3">分类食物营养率</h3>
+            <p class="text-fg-muted mb-4">一键搜索，名称/碳水/蛋白/脂肪</p>
+            <router-link to="/nutrition/food-nutrient-rate" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+              打开列表
+            </router-link>
+          </div>
+        </div>
+
+        <!-- 用户数据管理 -->
+      <div class="bg-surface rounded-lg shadow-lg p-6">
+          <div class="text-center">
+            <div class="text-3xl mb-4">👤</div>
+            <h3 class="text-xl font-semibold mb-2 nutrition-center-item-h3">用户数据管理</h3>
+            <p class="text-fg-muted mb-4">个人信息、身体数据、营养目标</p>
+            <router-link to="/user/settings" class="inline-block bg-purple-500 hover:bg-purple-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+              用户设置
+            </router-link>
+          </div>
+        </div>
       </div>
 
     </div>

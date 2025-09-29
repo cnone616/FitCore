@@ -7,16 +7,10 @@
       </div>
 
       <!-- 搜索框 -->
-      <div class="mb-8">
-        <div class="max-w-md mx-auto">
-          <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="搜索增肌方案..."
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-        </div>
-      </div>
+      <SearchInput
+        v-model="searchQuery"
+        placeholder="搜索增肌方案名称或说明（例如：早饭/午饭/晚饭/夜里/无力训）"
+      />
 
       <!-- 方案卡片 -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -45,6 +39,7 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAllMuscleGainPlans } from './plans-data';
+import SearchInput from '@/components/SearchInput.vue';
 
 const router = useRouter();
 const searchQuery = ref('');
