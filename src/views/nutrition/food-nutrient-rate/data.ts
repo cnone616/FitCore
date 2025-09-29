@@ -7356,6 +7356,857 @@ export const nutrientRates: NutrientRow[] = [
     "protein": 2.3,
     "fat": 3.6,
     "carb": 23.9
+  },
+  // 常见家常菜
+  {
+    "id": "food_gongbao_jiding",
+    "name": "宫保鸡丁",
+    "protein": 18.5,
+    "fat": 12.3,
+    "carb": 8.7
+  },
+  {
+    "id": "food_hongshao_rou",
+    "name": "红烧肉",
+    "protein": 15.2,
+    "fat": 28.6,
+    "carb": 4.8
+  },
+  {
+    "id": "food_mapo_doufu",
+    "name": "麻婆豆腐",
+    "protein": 12.8,
+    "fat": 8.9,
+    "carb": 6.2
+  },
+  {
+    "id": "food_qingjiao_rousi",
+    "name": "青椒肉丝",
+    "protein": 16.4,
+    "fat": 9.8,
+    "carb": 5.3
+  },
+  {
+    "id": "food_yuxiang_rousi",
+    "name": "鱼香肉丝",
+    "protein": 14.7,
+    "fat": 11.2,
+    "carb": 7.9
+  },
+  {
+    "id": "food_tangcu_liyu",
+    "name": "糖醋鲤鱼",
+    "protein": 19.8,
+    "fat": 6.5,
+    "carb": 12.4
+  },
+  {
+    "id": "food_huiguo_rou",
+    "name": "回锅肉",
+    "protein": 17.3,
+    "fat": 22.1,
+    "carb": 3.6
+  },
+  {
+    "id": "food_kongpao_doufu",
+    "name": "空爆豆腐",
+    "protein": 11.5,
+    "fat": 7.8,
+    "carb": 4.2
+  },
+  {
+    "id": "food_suanla_tudousi",
+    "name": "酸辣土豆丝",
+    "protein": 2.8,
+    "fat": 3.2,
+    "carb": 18.6
+  },
+  {
+    "id": "food_xihongshi_chaojidan",
+    "name": "西红柿炒鸡蛋",
+    "protein": 8.9,
+    "fat": 6.7,
+    "carb": 4.3
+  },
+  // 常见汤品
+  {
+    "id": "food_jidan_tang",
+    "name": "鸡蛋汤",
+    "protein": 4.2,
+    "fat": 2.8,
+    "carb": 1.5
+  },
+  {
+    "id": "food_xihongshi_jidan_tang",
+    "name": "西红柿鸡蛋汤",
+    "protein": 3.8,
+    "fat": 2.1,
+    "carb": 2.9
+  },
+  {
+    "id": "food_hai_dai_tang",
+    "name": "海带汤",
+    "protein": 1.2,
+    "fat": 0.3,
+    "carb": 2.1
+  },
+  // 常见主食
+  {
+    "id": "food_zhajiang_mian",
+    "name": "炸酱面",
+    "protein": 8.9,
+    "fat": 6.7,
+    "carb": 45.2
+  },
+  {
+    "id": "food_lamian",
+    "name": "拉面",
+    "protein": 6.8,
+    "fat": 2.1,
+    "carb": 52.3
+  },
+  {
+    "id": "food_chaomian",
+    "name": "炒面",
+    "protein": 7.2,
+    "fat": 8.9,
+    "carb": 48.6
+  },
+  {
+    "id": "food_chaofan",
+    "name": "炒饭",
+    "protein": 6.5,
+    "fat": 5.8,
+    "carb": 42.1
+  },
+  {
+    "id": "food_zhou",
+    "name": "白粥",
+    "protein": 1.8,
+    "fat": 0.2,
+    "carb": 18.9
+  },
+  // 常见零食
+  {
+    "id": "food_huasheng",
+    "name": "花生米",
+    "protein": 25.8,
+    "fat": 49.2,
+    "carb": 16.1
+  },
+  {
+    "id": "food_guazi",
+    "name": "瓜子",
+    "protein": 19.1,
+    "fat": 53.4,
+    "carb": 12.2
+  },
+  {
+    "id": "food_xingren",
+    "name": "杏仁",
+    "protein": 22.1,
+    "fat": 50.6,
+    "carb": 19.7
+  },
+  // 常见饮品
+  {
+    "id": "food_doujiang",
+    "name": "豆浆",
+    "protein": 1.8,
+    "fat": 0.7,
+    "carb": 1.1
+  },
+  {
+    "id": "food_niunai",
+    "name": "牛奶",
+    "protein": 3.0,
+    "fat": 3.2,
+    "carb": 3.4
+  },
+  {
+    "id": "food_yogurt",
+    "name": "酸奶",
+    "protein": 2.5,
+    "fat": 2.7,
+    "carb": 9.3
+  },
+  // 更多蔬菜类
+  {
+    "id": "food_qingcai",
+    "name": "青菜",
+    "protein": 1.5,
+    "fat": 0.3,
+    "carb": 2.2
+  },
+  {
+    "id": "food_baicai",
+    "name": "白菜",
+    "protein": 1.1,
+    "fat": 0.2,
+    "carb": 2.1
+  },
+  {
+    "id": "food_bohe",
+    "name": "菠菜",
+    "protein": 2.9,
+    "fat": 0.3,
+    "carb": 3.6
+  },
+  {
+    "id": "food_jiucai",
+    "name": "韭菜",
+    "protein": 2.4,
+    "fat": 0.4,
+    "carb": 3.2
+  },
+  {
+    "id": "food_doujiao",
+    "name": "豆角",
+    "protein": 2.5,
+    "fat": 0.2,
+    "carb": 4.6
+  },
+  {
+    "id": "food_huanggua",
+    "name": "黄瓜",
+    "protein": 0.8,
+    "fat": 0.2,
+    "carb": 2.9
+  },
+  {
+    "id": "food_qiuzi",
+    "name": "茄子",
+    "protein": 1.1,
+    "fat": 0.1,
+    "carb": 3.6
+  },
+  {
+    "id": "food_douya",
+    "name": "豆芽",
+    "protein": 2.1,
+    "fat": 0.1,
+    "carb": 2.1
+  },
+  {
+    "id": "food_baicai",
+    "name": "白菜",
+    "protein": 1.1,
+    "fat": 0.2,
+    "carb": 2.1
+  },
+  {
+    "id": "food_youcai",
+    "name": "油菜",
+    "protein": 1.8,
+    "fat": 0.5,
+    "carb": 2.7
+  },
+  // 更多水果类
+  {
+    "id": "food_li",
+    "name": "梨",
+    "protein": 0.4,
+    "fat": 0.1,
+    "carb": 10.2
+  },
+  {
+    "id": "food_tao",
+    "name": "桃",
+    "protein": 0.9,
+    "fat": 0.1,
+    "carb": 10.9
+  },
+  {
+    "id": "food_putao",
+    "name": "葡萄",
+    "protein": 0.5,
+    "fat": 0.2,
+    "carb": 10.3
+  },
+  {
+    "id": "food_chengzi",
+    "name": "橙子",
+    "protein": 0.8,
+    "fat": 0.2,
+    "carb": 11.1
+  },
+  {
+    "id": "food_ganju",
+    "name": "柑橘",
+    "protein": 0.7,
+    "fat": 0.1,
+    "carb": 11.9
+  },
+  {
+    "id": "food_shiliu",
+    "name": "石榴",
+    "protein": 1.4,
+    "fat": 0.2,
+    "carb": 13.9
+  },
+  {
+    "id": "food_liulian",
+    "name": "榴莲",
+    "protein": 2.6,
+    "fat": 3.3,
+    "carb": 27.1
+  },
+  {
+    "id": "food_mangguo",
+    "name": "芒果",
+    "protein": 0.6,
+    "fat": 0.2,
+    "carb": 14.0
+  },
+  {
+    "id": "food_boluo",
+    "name": "菠萝",
+    "protein": 0.5,
+    "fat": 0.1,
+    "carb": 10.8
+  },
+  {
+    "id": "food_weiduoguo",
+    "name": "猕猴桃",
+    "protein": 1.0,
+    "fat": 0.6,
+    "carb": 11.9
+  },
+  // 更多肉类
+  {
+    "id": "food_yangrou",
+    "name": "羊肉",
+    "protein": 19.0,
+    "fat": 14.1,
+    "carb": 0.0
+  },
+  {
+    "id": "food_zhurou",
+    "name": "猪肉",
+    "protein": 20.3,
+    "fat": 37.0,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鸡鸭",
+    "protein": 19.3,
+    "fat": 9.4,
+    "carb": 1.3
+  },
+  {
+    "id": "food_jiya",
+    "name": "鸭肉",
+    "protein": 15.5,
+    "fat": 19.7,
+    "carb": 0.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "鹅肉",
+    "protein": 17.9,
+    "fat": 19.9,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "兔肉",
+    "protein": 19.7,
+    "fat": 2.2,
+    "carb": 0.9
+  },
+  {
+    "id": "food_jiya",
+    "name": "驴肉",
+    "protein": 21.5,
+    "fat": 3.2,
+    "carb": 0.4
+  },
+  {
+    "id": "food_jiya",
+    "name": "狗肉",
+    "protein": 16.8,
+    "fat": 4.6,
+    "carb": 1.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "鹿肉",
+    "protein": 19.5,
+    "fat": 2.5,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "蛇肉",
+    "protein": 18.1,
+    "fat": 0.5,
+    "carb": 0.0
+  },
+  // 更多海鲜类
+  {
+    "id": "food_jiya",
+    "name": "带鱼",
+    "protein": 17.7,
+    "fat": 4.9,
+    "carb": 3.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "黄花鱼",
+    "protein": 17.7,
+    "fat": 2.5,
+    "carb": 0.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲤鱼",
+    "protein": 17.6,
+    "fat": 4.1,
+    "carb": 0.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲫鱼",
+    "protein": 17.1,
+    "fat": 2.7,
+    "carb": 3.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "草鱼",
+    "protein": 16.6,
+    "fat": 5.2,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲢鱼",
+    "protein": 17.8,
+    "fat": 3.6,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鳙鱼",
+    "protein": 15.3,
+    "fat": 4.9,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲈鱼",
+    "protein": 18.6,
+    "fat": 3.4,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲳鱼",
+    "protein": 18.5,
+    "fat": 7.3,
+    "carb": 0.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "鲅鱼",
+    "protein": 21.2,
+    "fat": 3.1,
+    "carb": 2.2
+  },
+  // 更多豆制品
+  {
+    "id": "food_jiya",
+    "name": "豆腐干",
+    "protein": 16.2,
+    "fat": 3.6,
+    "carb": 11.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆腐皮",
+    "protein": 44.6,
+    "fat": 17.4,
+    "carb": 18.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆腐丝",
+    "protein": 21.5,
+    "fat": 10.5,
+    "carb": 6.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "腐竹",
+    "protein": 44.6,
+    "fat": 21.7,
+    "carb": 22.3
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆皮",
+    "protein": 25.0,
+    "fat": 12.0,
+    "carb": 15.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆筋",
+    "protein": 42.0,
+    "fat": 18.0,
+    "carb": 20.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆泡",
+    "protein": 17.0,
+    "fat": 17.6,
+    "carb": 4.3
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆芽",
+    "protein": 2.1,
+    "fat": 0.1,
+    "carb": 2.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆苗",
+    "protein": 2.6,
+    "fat": 0.3,
+    "carb": 2.0
+  },
+  {
+    "id": "food_jiya",
+    "name": "豆角",
+    "protein": 2.5,
+    "fat": 0.2,
+    "carb": 4.6
+  },
+  // 更多家常菜
+  {
+    "id": "food_jiya",
+    "name": "红烧排骨",
+    "protein": 18.2,
+    "fat": 12.5,
+    "carb": 8.3
+  },
+  {
+    "id": "food_jiya",
+    "name": "糖醋里脊",
+    "protein": 16.8,
+    "fat": 8.9,
+    "carb": 15.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "可乐鸡翅",
+    "protein": 19.5,
+    "fat": 11.2,
+    "carb": 12.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒜蓉西兰花",
+    "protein": 3.2,
+    "fat": 0.6,
+    "carb": 4.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "干煸豆角",
+    "protein": 2.8,
+    "fat": 1.2,
+    "carb": 5.4
+  },
+  {
+    "id": "food_jiya",
+    "name": "蚂蚁上树",
+    "protein": 8.5,
+    "fat": 2.1,
+    "carb": 18.6
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧茄子",
+    "protein": 1.8,
+    "fat": 0.3,
+    "carb": 6.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "地三鲜",
+    "protein": 2.1,
+    "fat": 0.8,
+    "carb": 7.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧豆腐",
+    "protein": 8.1,
+    "fat": 3.2,
+    "carb": 4.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋羹",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "白切鸡",
+    "protein": 20.8,
+    "fat": 4.2,
+    "carb": 0.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "口水鸡",
+    "protein": 19.5,
+    "fat": 8.6,
+    "carb": 2.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "水煮鱼",
+    "protein": 18.2,
+    "fat": 6.8,
+    "carb": 1.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "酸菜鱼",
+    "protein": 17.8,
+    "fat": 5.2,
+    "carb": 2.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧鱼",
+    "protein": 16.5,
+    "fat": 4.8,
+    "carb": 3.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "清蒸鲈鱼",
+    "protein": 18.8,
+    "fat": 2.1,
+    "carb": 0.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "糖醋鱼",
+    "protein": 15.2,
+    "fat": 3.8,
+    "carb": 12.6
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧狮子头",
+    "protein": 16.8,
+    "fat": 12.5,
+    "carb": 8.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "四喜丸子",
+    "protein": 15.2,
+    "fat": 11.8,
+    "carb": 6.5
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧牛肉",
+    "protein": 20.5,
+    "fat": 8.2,
+    "carb": 2.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "土豆炖牛肉",
+    "protein": 12.8,
+    "fat": 4.5,
+    "carb": 15.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧羊肉",
+    "protein": 18.6,
+    "fat": 12.8,
+    "carb": 3.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "白切羊肉",
+    "protein": 19.2,
+    "fat": 8.5,
+    "carb": 0.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "红烧猪蹄",
+    "protein": 22.8,
+    "fat": 18.5,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "糖醋排骨",
+    "protein": 16.8,
+    "fat": 12.2,
+    "carb": 15.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒜蓉生菜",
+    "protein": 1.4,
+    "fat": 0.3,
+    "carb": 2.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "清炒小白菜",
+    "protein": 1.5,
+    "fat": 0.2,
+    "carb": 2.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒜蓉菠菜",
+    "protein": 2.9,
+    "fat": 0.3,
+    "carb": 3.6
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌黄瓜",
+    "protein": 0.8,
+    "fat": 0.1,
+    "carb": 2.9
+  },
+  {
+    "id": "food_jiya",
+    "name": "拍黄瓜",
+    "protein": 0.8,
+    "fat": 0.1,
+    "carb": 2.9
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌木耳",
+    "protein": 1.2,
+    "fat": 0.2,
+    "carb": 3.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌海带丝",
+    "protein": 1.8,
+    "fat": 0.1,
+    "carb": 2.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌豆腐丝",
+    "protein": 8.2,
+    "fat": 2.1,
+    "carb": 1.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌萝卜丝",
+    "protein": 0.6,
+    "fat": 0.1,
+    "carb": 3.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌豆芽",
+    "protein": 1.4,
+    "fat": 0.1,
+    "carb": 2.1
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌粉丝",
+    "protein": 0.8,
+    "fat": 0.1,
+    "carb": 17.3
+  },
+  {
+    "id": "food_jiya",
+    "name": "凉拌土豆丝",
+    "protein": 2.0,
+    "fat": 0.1,
+    "carb": 17.8
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸水蛋",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋花",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋饼",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋卷",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋包",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋饺",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋面",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
+  },
+  {
+    "id": "food_jiya",
+    "name": "蒸蛋汤",
+    "protein": 6.2,
+    "fat": 4.8,
+    "carb": 1.2
   }
 ] as const;
 export default nutrientRates;
