@@ -11,86 +11,44 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- 肌肉解剖图 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
+        <!-- 健身解剖总结（文字版） -->
+        <div class="bg-surface rounded-lg shadow-lg p-6">
           <div class="text-center">
-            <div class="text-3xl mb-4">💪</div>
-            <h3 class="text-xl font-semibold mb-2">肌肉解剖图</h3>
+            <div class="text-3xl mb-4">📖</div>
+            <h3 class="text-xl font-semibold mb-2">健身解剖总结</h3>
             <p class="text-fg-muted mb-4">
-              详细的人体肌肉结构图解
+              系统性学习健身相关的人体解剖知识
             </p>
-            <button class="bg-blue-500 hover:bg-blue-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              查看解剖图
+            <button @click="goToMuscleOverview" class="bg-blue-500 hover:bg-blue-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+              查看交互版
             </button>
           </div>
         </div>
 
-        <!-- 骨骼系统 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
+        <!-- 关节活动的肌肉（图示版） -->
+        <div class="bg-surface rounded-lg shadow-lg p-6">
           <div class="text-center">
             <div class="text-3xl mb-4">🦴</div>
-            <h3 class="text-xl font-semibold mb-2">骨骼系统</h3>
+            <h3 class="text-xl font-semibold mb-2">关节活动的肌肉</h3>
             <p class="text-fg-muted mb-4">
-              人体骨骼结构详解
+              详细展示各关节周围的主要肌肉图解
             </p>
-            <button class="bg-green-500 hover:bg-green-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              学习骨骼
+            <button @click="goToJointMuscles" class="bg-green-500 hover:bg-green-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+              查看图示版
             </button>
           </div>
         </div>
 
-        <!-- 关节运动 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
+        <!-- 肌肉的关节活动（图示版） -->
+        <div class="bg-surface rounded-lg shadow-lg p-6">
           <div class="text-center">
-            <div class="text-3xl mb-4">🔄</div>
-            <h3 class="text-xl font-semibold mb-2">关节运动</h3>
+            <div class="text-3xl mb-4">💪</div>
+            <h3 class="text-xl font-semibold mb-2">肌肉的关节活动</h3>
             <p class="text-fg-muted mb-4">
-              关节运动原理和范围
+              通过肌肉视角了解其参与的关节活动
             </p>
-            <button class="bg-purple-500 hover:bg-purple-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              了解关节
-            </button>
-          </div>
-        </div>
-
-        <!-- 运动原理 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
-          <div class="text-center">
-            <div class="text-3xl mb-4">⚡</div>
-            <h3 class="text-xl font-semibold mb-2">运动原理</h3>
-            <p class="text-fg-muted mb-4">
-              肌肉收缩和运动机制
-            </p>
-            <button class="bg-orange-500 hover:bg-orange-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              学习原理
-            </button>
-          </div>
-        </div>
-
-        <!-- 解剖知识库 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
-          <div class="text-center">
-            <div class="text-3xl mb-4">📚</div>
-            <h3 class="text-xl font-semibold mb-2">解剖知识库</h3>
-            <p class="text-fg-muted mb-4">
-              丰富的解剖学知识资料
-            </p>
-            <button class="bg-red-500 hover:bg-red-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              浏览知识库
-            </button>
-          </div>
-        </div>
-
-        <!-- 3D模型 -->
-      <div class="bg-surface rounded-lg shadow-lg p-6">
-          <div class="text-center">
-            <div class="text-3xl mb-4">🎯</div>
-            <h3 class="text-xl font-semibold mb-2">3D模型</h3>
-            <p class="text-fg-muted mb-4">
-              交互式3D人体模型
-            </p>
-            <button class="bg-indigo-500 hover:bg-indigo-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
-              查看3D模型
+            <button @click="goToMuscleMovements" class="bg-purple-500 hover:bg-purple-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+              查看图示版
             </button>
           </div>
         </div>
@@ -101,7 +59,24 @@
 </template>
 
 <script setup lang="ts">
-// 解剖学习页面逻辑
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+// 跳转到交互式肌肉概览页面
+const goToMuscleOverview = () => {
+  router.push('/anatomy/muscle-overview');
+};
+
+// 跳转到关节活动肌肉页面
+const goToJointMuscles = () => {
+  router.push('/anatomy/joint-muscles');
+};
+
+// 跳转到肌肉活动页面
+const goToMuscleMovements = () => {
+  router.push('/anatomy/muscle-movements');
+};
 </script>
 
 <style scoped>

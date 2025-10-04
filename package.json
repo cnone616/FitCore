@@ -16,6 +16,7 @@
     "@vueuse/core": "^10.7.0",
     "element-plus": "^2.4.0",
     "@headlessui/vue": "^1.7.0",
+    "@lucawahlen/vue-human-muscle-anatomy": "^1.1.0",
     "html-to-image": "^1.11.11"
   },
   "devDependencies": {

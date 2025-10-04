@@ -19,7 +19,7 @@
             <p class="text-fg-muted mb-4">
               丰富的健身动作视频和说明
             </p>
-            <router-link to="/training/workouts" class="inline-block bg-green-500 hover:bg-green-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
+            <router-link to="/training/exercise-library" class="inline-block bg-green-500 hover:bg-green-600 text-on-primary px-4 py-2 rounded-lg transition-colors">
               浏览动作
             </router-link>
           </div>

@@ -107,6 +107,22 @@ const routes = [
     }
   },
   {
+    path: '/training/exercise-library',
+    name: 'ExerciseLibrary',
+    component: () => import('@/views/training/exercises/exercise-library.vue'),
+    meta: {
+      title: '动作库'
+    }
+  },
+  {
+    path: '/training/exercises/detail',
+    name: 'ExerciseDetail',
+    component: () => import('@/views/training/exercises/exercise-detail.vue'),
+    meta: {
+      title: '动作详情'
+    }
+  },
+  {
     path: '/training/gym-3-split',
     name: 'GymThreeSplit',
     component: () => import('@/views/training/gym-3-split/index.vue'),
@@ -156,8 +172,8 @@ const routes = [
   },
   {
     path: '/training/exercise/:id',
-    name: 'ExerciseDetail',
-    component: () => import('@/views/training/exercise-detail.vue'),
+    name: 'ExerciseDetailById',
+    component: () => import('@/views/training/exercises/exercise-detail.vue'),
     meta: {
       title: '动作详情'
     }
@@ -176,6 +192,30 @@ const routes = [
     component: () => import('@/views/anatomy/index.vue'),
     meta: {
       title: '解剖学习'
+    }
+  },
+  {
+    path: '/anatomy/joint-muscles',
+    name: 'JointMuscles',
+    component: () => import('@/views/anatomy/joint-muscles.vue'),
+    meta: {
+      title: '关节活动的肌肉'
+    }
+  },
+  {
+    path: '/anatomy/muscle-movements',
+    name: 'MuscleMovements',
+    component: () => import('@/views/anatomy/muscle-movements.vue'),
+    meta: {
+      title: '肌肉的关节活动'
+    }
+  },
+  {
+    path: '/anatomy/muscle-overview',
+    name: 'MuscleOverview',
+    component: () => import('@/views/anatomy/muscle-overview.vue'),
+    meta: {
+      title: '健身解剖总结'
     }
   },
   {
