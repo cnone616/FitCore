@@ -1,15 +1,22 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-fg mb-4">居家三分话</h1>
-    <p class="text-fg-muted mb-6">静态内容占位，稍后补充完整数据与文件。</p>
+  <div>
+    <!-- 居家健身指导 -->
+    <TrainingGuide :custom-guide="homeTrainingGuide" />
+    
+    <!-- 训练计划展示 -->
+    <TrainingPlanDisplay :overview="planOverviewData" :plans="trainingPlans" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { plans } from './data';
+import TrainingGuide from '@/components/training/TrainingGuide.vue';
+import TrainingPlanDisplay from '@/components/training/TrainingPlanDisplay.vue';
+import { planOverview, home3SplitPlans, homeTrainingGuide } from './data';
+
+// 获取计划概览和训练计划数据
+const planOverviewData = planOverview;
+const trainingPlans = home3SplitPlans;
 </script>
 
 <style scoped>
 </style>
-
-

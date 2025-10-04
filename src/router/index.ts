@@ -155,6 +155,14 @@ const routes = [
     }
   },
   {
+    path: '/training/exercise/:id',
+    name: 'ExerciseDetail',
+    component: () => import('@/views/training/exercise-detail.vue'),
+    meta: {
+      title: '动作详情'
+    }
+  },
+  {
     path: '/stretching',
     name: 'Stretching',
     component: () => import('@/views/stretching/index.vue'),

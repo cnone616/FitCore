@@ -1,15 +1,22 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-fg mb-4">健身房四分化(单练肩)</h1>
-    <p class="text-fg-muted mb-6">静态内容占位，稍后补充完整数据与文件。</p>
+  <div>
+    <!-- 训练指南 -->
+    <TrainingGuide />
+    
+    <!-- 训练计划展示 -->
+    <TrainingPlanDisplay :overview="planOverviewData" :plans="trainingPlans" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { plans } from './data';
+import TrainingGuide from '@/components/training/TrainingGuide.vue';
+import TrainingPlanDisplay from '@/components/training/TrainingPlanDisplay.vue';
+import { planOverview, gym4SplitShouldersPlans } from './data';
+
+// 获取计划概览和训练计划数据
+const planOverviewData = planOverview;
+const trainingPlans = gym4SplitShouldersPlans;
 </script>
 
 <style scoped>
 </style>
-
-
