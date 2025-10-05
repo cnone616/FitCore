@@ -257,6 +257,14 @@ const routes = [
     meta: {
       title: '关于'
     }
+  },
+  {
+    path: '/debug/muscle-anatomy',
+    name: 'MuscleAnatomyDebug',
+    component: () => import('@/views/debug/muscle-anatomy-debug.vue'),
+    meta: {
+      title: '肌肉组件调试'
+    }
   }
 ];
 

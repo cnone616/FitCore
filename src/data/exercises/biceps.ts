@@ -96,8 +96,113 @@ export const bicepsOuterData: MuscleGroupData = {
   }
 }
 
-// 二头肌动作数组（暂时留空）
-export const bicepsInnerExercises: Exercise[] = []
+// 二头肌动作数组
+export const bicepsInnerExercises: Exercise[] = [
+  {
+    id: 'dumbbell-curl',
+    name: 'Dumbbell Curl',
+    chineseName: '哑铃弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['biceps', 'forearms'],
+    equipment: ['dumbbell'],
+    difficulty: 'beginner',
+    description: '经典哑铃弯举，重点肱二头肌',
+    instructions: [
+      '双手各持一个哑铃',
+      '肘部贴近身体',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降哑铃'
+    ]
+  },
+  {
+    id: 'resistance-band-curl',
+    name: 'Resistance Band Curl',
+    chineseName: '弹力带弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['biceps', 'forearms'],
+    equipment: ['resistance-band'],
+    difficulty: 'beginner',
+    description: '弹力带弯举，重点肱二头肌',
+    instructions: [
+      '弹力带固定在低位',
+      '双手握住弹力带',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢回到起始位置'
+    ]
+  },
+  {
+    id: 'barbell-curl',
+    name: 'Barbell Curl',
+    chineseName: '杠铃弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['biceps', 'forearms'],
+    equipment: ['barbell'],
+    difficulty: 'intermediate',
+    description: '杠铃弯举，重点肱二头肌',
+    instructions: [
+      '双手握杠铃，与肩同宽',
+      '肘部贴近身体',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降杠铃'
+    ]
+  },
+  {
+    id: 'machine-curl',
+    name: 'Machine Curl',
+    chineseName: '器械弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['biceps'],
+    equipment: ['machine'],
+    difficulty: 'beginner',
+    description: '器械弯举，轨迹固定',
+    instructions: [
+      '坐在器械座椅上',
+      '双臂放在垫子上',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降'
+    ]
+  },
+  {
+    id: 'preacher-curl',
+    name: 'Preacher Curl',
+    chineseName: '牧师椅弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['biceps'],
+    equipment: ['barbell', 'bench'],
+    difficulty: 'intermediate',
+    description: '牧师椅弯举，孤立肱二头肌',
+    instructions: [
+      '坐在牧师椅上',
+      '双臂放在斜板上',
+      '向上弯举杠铃',
+      '挤压肱二头肌',
+      '缓慢下降'
+    ]
+  },
+  {
+    id: 'concentration-curl',
+    name: 'Concentration Curl',
+    chineseName: '集中弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['forearms'],
+    equipment: ['dumbbell'],
+    difficulty: 'intermediate',
+    description: '集中弯举，重点肱二头肌',
+    instructions: [
+      '坐在凳子上',
+      '单手持哑铃',
+      '肘部支撑在大腿内侧',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降哑铃'
+    ]
+  }
+]
+
 export const bicepsOuterExercises: Exercise[] = []
 
 // 导出所有二头肌数据
@@ -111,3 +216,58 @@ export const bicepsExerciseData = {
     exercises: bicepsOuterExercises
   }
 }
+
+// 弹力绳二头肌动作
+export const resistanceBandBicepsExercises: Exercise[] = [
+  {
+    id: 'home-resistance-band-curl',
+    name: 'Resistance Band Curl',
+    chineseName: '弹力带弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['forearms'],
+    equipment: ['resistance-band'],
+    difficulty: 'beginner',
+    description: '弹力带弯举，重点肱二头肌',
+    instructions: [
+      '弹力带固定在脚下',
+      '双手握住弹力带',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降'
+    ]
+  },
+  {
+    id: 'home-dumbbell-curl',
+    name: 'Home Dumbbell Curl',
+    chineseName: '哑铃弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['forearms'],
+    equipment: ['dumbbell'],
+    difficulty: 'beginner',
+    description: '居家哑铃弯举，重点肱二头肌',
+    instructions: [
+      '双手各持一个哑铃',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降'
+    ]
+  },
+  {
+    id: 'home-concentration-curl',
+    name: 'Home Concentration Curl',
+    chineseName: '集中弯举',
+    primaryMuscles: ['biceps'],
+    secondaryMuscles: ['forearms'],
+    equipment: ['dumbbell'],
+    difficulty: 'intermediate',
+    description: '居家集中弯举，重点肱二头肌',
+    instructions: [
+      '坐在凳子上',
+      '单手持哑铃',
+      '肘部支撑在大腿内侧',
+      '向上弯举至肩高',
+      '挤压肱二头肌',
+      '缓慢下降哑铃'
+    ]
+  }
+]

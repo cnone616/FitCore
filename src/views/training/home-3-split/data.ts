@@ -19,7 +19,7 @@ export const home3SplitPlans = [
           instruction: '选1-2个动作 总共6-8组',
           exercises: [
             {
-              exerciseId: 'home-pull-up',
+              exerciseId: 'pull-up',
               exerciseName: '引体向上（可用弹力带减重）',
               jointMovements: [
                 {

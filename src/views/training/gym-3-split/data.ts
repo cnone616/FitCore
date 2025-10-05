@@ -17,7 +17,7 @@ export const gym3SplitPlans = [
                 categoryName: '下拉',
                 instruction: '选1-2个动作 总共6-8组',
                 exercises: [{
-                    exerciseId: 'pull-ups',
+                    exerciseId: 'pull-up',
                     exerciseName: '引体向上',
                     jointMovements: [{
                         jointId: 'shoulder-joint',
@@ -73,7 +73,73 @@ export const gym3SplitPlans = [
                         jointName: '肘关节',
                         movementDescription: '肘屈'
                     }]
-                }]
+                },
+                {
+                    exerciseId: 'barbell-row',
+                    exerciseName: '杠铃俯身划船',
+                    jointMovements: [{
+                        jointId: 'shoulder-joint',
+                        jointName: '肩关节',
+                        movementDescription: '[宽握]肩水平外展'
+                    },
+                    {
+                        jointId: 'elbow-joint',
+                        jointName: '肘关节',
+                        movementDescription: '肘屈'
+                    }]
+                },
+                {
+                    exerciseId: 't-bar-row',
+                    exerciseName: 'T杆俯身划船',
+                    jointMovements: [{
+                        jointId: 'shoulder-joint',
+                        jointName: '肩关节',
+                        movementDescription: '[中握]肩伸mix肩水平外展'
+                    },
+                    {
+                        jointId: 'elbow-joint',
+                        jointName: '肘关节',
+                        movementDescription: '肘屈'
+                    }]
+                },
+                {
+                    exerciseId: 'seated-cable-row',
+                    exerciseName: '坐姿器械划船',
+                    jointMovements: [{
+                        jointId: 'shoulder-joint',
+                        jointName: '肩关节',
+                        movementDescription: '[窄握]肩伸'
+                    },
+                    {
+                        jointId: 'elbow-joint',
+                        jointName: '肘关节',
+                        movementDescription: '肘屈'
+                    }]
+                },
+                {
+                    exerciseId: 'dumbbell-row',
+                    exerciseName: '单边哑铃划船',
+                    jointMovements: [{
+                        jointId: 'shoulder-joint',
+                        jointName: '肩关节',
+                        movementDescription: '肩伸'
+                    },
+                    {
+                        jointId: 'elbow-joint',
+                        jointName: '肘关节',
+                        movementDescription: '肘屈'
+                    }]
+                },
+                {
+                    exerciseId: 'straight-arm-pulldown',
+                    exerciseName: '龙门架直臂下压',
+                    jointMovements: [{
+                        jointId: 'shoulder-joint',
+                        jointName: '肩关节',
+                        movementDescription: '肩伸'
+                    }]
+                }
+            ]
             }, {
                 categoryId: 'rear-deltoid',
                 categoryName: '肩后束',
@@ -174,7 +240,7 @@ export const gym3SplitPlans = [
                 categoryName: '中胸（占胸大肌大部肌纤维）',
                 instruction: '选2-3个动作 总共10组',
                 exercises: [{
-                    exerciseId: 'horizontal-press',
+                    exerciseId: 'bench-press',
                     exerciseName: '杠铃/哑铃/史密斯卧推（水平推）',
                     jointMovements: [{
                         jointId: 'shoulder-joint',
@@ -198,7 +264,7 @@ export const gym3SplitPlans = [
                         movementDescription: '肘伸'
                     }]
                 }, {
-                    exerciseId: 'pec-deck',
+                    exerciseId: 'pec-fly',
                     exerciseName: '蝴蝶机夹胸',
                     jointMovements: [{
                         jointId: 'shoulder-joint',
@@ -206,7 +272,7 @@ export const gym3SplitPlans = [
                         movementDescription: '肩水平内收'
                     }]
                 }, {
-                    exerciseId: 'cable-chest-fly',
+                    exerciseId: 'cable-fly',
                     exerciseName: '龙门架夹胸（水平夹）',
                     jointMovements: [{
                         jointId: 'shoulder-joint',
@@ -259,7 +325,7 @@ export const gym3SplitPlans = [
                         movementDescription: '肘伸'
                     }]
                 }, {
-                    exerciseId: 'dips-chest-focused',
+                    exerciseId: 'dips',
                     exerciseName: '双杠臂屈伸（上身前趴30-60°）',
                     jointMovements: [{
                         jointId: 'shoulder-joint',
@@ -376,7 +442,7 @@ export const gym3SplitPlans = [
                         movementDescription: '肘伸'
                     }]
                 }, {
-                    exerciseId: 'rope-overhead-extension',
+                    exerciseId: 'cable-overhead-extension',
                     exerciseName: '龙门架绳索臂屈伸',
                     jointMovements: [{
                         jointId: 'elbow-joint',
@@ -477,7 +543,7 @@ export const gym3SplitPlans = [
                 categoryName: '臀大肌',
                 instruction: '选1-2个动作 总共6-8组',
                 exercises: [{
-                    exerciseId: 'machine-hip-thrust',
+                    exerciseId: 'hip-thrust',
                     exerciseName: '器械臀冲',
                     jointMovements: [{
                         jointId: 'hip-joint',
@@ -522,7 +588,7 @@ export const gym3SplitPlans = [
                         movementDescription: '髋伸'
                     }]
                 }, {
-                    exerciseId: 'lunges',
+                    exerciseId: 'lunge',
                     exerciseName: '箭步蹲',
                     jointMovements: [{
                         jointId: 'knee-joint',

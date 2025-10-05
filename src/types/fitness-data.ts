@@ -11,7 +11,7 @@ export type MuscleRegion =
   | 'middle-lower-chest'    // 中下胸 - 胸大肌胸骨部和肋骨部(细分)
   
   // 🫁 背部细分 (2种) 
-  | 'upper-back'            // 上背 - 斜方肌上部、菱形肌、后三角肌
+  | 'upper-back'            // 上背 - 斜方肌上部、菱形肌、三角肌后束
   | 'lower-back'            // 下背 - 竖脊肌、下斜方肌、阔背肌
   
   // 🦵 腿部细分 (2种)

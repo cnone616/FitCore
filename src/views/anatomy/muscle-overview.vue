@@ -7,26 +7,96 @@
           📖 健身解剖总结
         </h1>
       </div>
-      <!-- 专业的人体肌肉解剖图 -->
-      <div class="muscle-diagram-container">
-        <div class="figure-container">
-          <h3 class="figure-title text-2xl font-semibold text-fg mb-4">人体肌肉解剖图</h3>
-          <div class="figure-wrapper" @click="handleSVGClick" ref="svgContainer">
-            <!-- 选中肌肉名称显示在组件内部 -->
-            <div v-if="currentSelectedMuscle" class="muscle-info-overlay">
-              <span class="muscle-name-text">{{ currentSelectedMuscle.name }}</span>
-              <button @click="clearSelection" class="clear-btn-inline">✕</button>
+      
+      <!-- 左右布局 -->
+      <div class="flex gap-6">
+        <!-- 左侧控制面板 -->
+        <div class="control-panel w-80">
+          <div class="bg-white rounded-lg p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-4">控制面板</h3>
+            
+            <!-- 性别切换 -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium mb-2">性别</label>
+              <div class="flex gap-2">
+                <button 
+                  @click="gender = 'male'"
+                  :class="['px-4 py-2 rounded', gender === 'male' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700']"
+                >
+                  男性
+                </button>
+                <button 
+                  @click="gender = 'female'"
+                  :class="['px-4 py-2 rounded', gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700']"
+                >
+                  女性
+                </button>
+              </div>
             </div>
-            <HumanMuscleAnatomy
-              gender="male"
-              :selected-primary-muscle-groups="getMappedMuscleGroups() as any"
-              :selected-secondary-muscle-groups="[]"
-              default-muscle-color="#828d99"
-              primary-highlight-color="#51d5ce"
-              secondary-highlight-color="#828d99"
-              background-color="#99a5c3"
-              class="anatomy-svg-figure"
-            />
+            
+            <!-- 肌肉部位勾选 -->
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-3">
+                <label class="block text-sm font-medium">肌肉部位</label>
+                <div class="flex gap-2">
+                  <button 
+                    @click="toggleSelectAll"
+                    class="text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                  >
+                    {{ isAllSelected ? '取消全选' : '全选' }}
+                  </button>
+                  <button 
+                    @click="clearAllSelections"
+                    class="text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                  >
+                    取消选择
+                  </button>
+                </div>
+              </div>
+              <div class="muscle-list-container">
+                <div class="space-y-2">
+                  <label 
+                    v-for="(muscle, id) in muscleData" 
+                    :key="id"
+                    class="flex items-start space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50"
+                  >
+                    <input 
+                      type="checkbox" 
+                      :checked="isMuscleSelected(id)"
+                      @change="toggleMuscle(id)"
+                      class="rounded mt-0.5 flex-shrink-0"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm font-medium text-gray-900">{{ muscle.name }}</div>
+                      <div class="text-xs text-gray-500 mt-1 leading-relaxed">{{ muscle.description }}</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 右侧肌肉解剖图 -->
+        <div class="muscle-diagram-container flex-1">
+          <div class="figure-container">
+            <h3 class="figure-title text-2xl font-semibold text-fg mb-4">人体肌肉解剖图</h3>
+            <div class="figure-wrapper" ref="svgContainer">
+              <HumanMuscleAnatomy
+                :gender="gender"
+                :selected-primary-muscle-groups="selectedPrimaryMuscleGroups as any"
+                :selected-secondary-muscle-groups="selectedSecondaryMuscleGroups as any"
+                :show-legend="true"
+                :enable-click-highlight="true"
+                @update:selected-primary-muscle-groups="selectedPrimaryMuscleGroups = $event"
+                @update:selected-secondary-muscle-groups="selectedSecondaryMuscleGroups = $event"
+                default-muscle-color="#828d99"
+                primary-highlight-color="#16a085"
+                secondary-highlight-color="#16a085"
+                background-color="#e1e1e1"
+                class="anatomy-svg-figure"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -36,15 +106,14 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { HumanMuscleAnatomy } from '@lucawahlen/vue-human-muscle-anatomy';
+import { HumanMuscleAnatomy } from '@/components/muscle-anatomy/src';
 
-const router = useRouter();
-const utils = { back: () => router.back() };
+// 性别状态
+const gender = ref<'male' | 'female'>('male');
 
-// 肌肉选中状态
-const selectedMuscles = ref<Set<string>>(new Set());
-const currentSelectedMuscle = ref<any>(null);
+// 肌肉高亮状态
+const selectedPrimaryMuscleGroups = ref<string[]>([]);
+const selectedSecondaryMuscleGroups = ref<string[]>([]);
 
 // 肌肉数据 - 对应组件支持的21种肌肉群
 const muscleData = {
@@ -156,95 +225,49 @@ const muscleData = {
   }
 };
 
-// 1:1 直接映射 - 我们直接使用组件支持的肌肉群名称
-const muscleMapping: Record<string, string> = {
-  'chest': 'chest',
-  'lats': 'lats',
-  'traps': 'traps',
-  'lowerBack': 'lowerBack',
-  'frontDelts': 'frontDelts',
-  'sideDelts': 'sideDelts',
-  'rearDelts': 'rearDelts',
-  'rotatorCuffs': 'rotatorCuffs',
-  'biceps': 'biceps',
-  'triceps': 'triceps',
-  'forearms': 'forearms',
-  'abs': 'abs',
-  'obliques': 'obliques',
-  'neck': 'neck',
-  'glutes': 'glutes',
-  'quads': 'quads',
-  'hamstrings': 'hamstrings',
-  'adductors': 'adductors',
-  'abductors': 'abductors',
-  'calves': 'calves'
+
+// 计算属性 - 检查是否全选
+const isAllSelected = computed(() => {
+  const allMuscleIds = Object.keys(muscleData);
+  return allMuscleIds.every(id => isMuscleSelected(id));
+});
+
+// 检查肌肉是否被选中
+const isMuscleSelected = (muscleId: string) => {
+  return selectedPrimaryMuscleGroups.value.includes(muscleId) || 
+         selectedSecondaryMuscleGroups.value.includes(muscleId);
 };
 
-// 组件内部ID到我们的ID的映射 - 1:1映射
-const svgIdToOurId: Record<string, string> = {
-  'chest': 'chest',
-  'lats': 'lats',
-  'traps': 'traps',
-  'rotatorCuffs': 'rotatorCuffs',
-  'lowerBack': 'lowerBack',
-  'frontDelts': 'frontDelts',
-  'sideDelts': 'sideDelts',
-  'rearDelts': 'rearDelts',
-  'biceps': 'biceps',
-  'triceps': 'triceps',
-  'forearms': 'forearms',
-  'abs': 'abs',
-  'obliques': 'obliques',
-  'glutes': 'glutes',
-  'quads': 'quads',
-  'hamstrings': 'hamstrings',
-  'adductors': 'adductors',
-  'abductors': 'abductors',
-  'calves': 'calves',
-  'neck': 'neck'
-};
-
-// 获取映射后的肌肉组
-const getMappedMuscleGroups = (): string[] => {
-  return Array.from(selectedMuscles.value)
-    .map(id => muscleMapping[id])
-    .filter(Boolean);
-};
-
-// 处理SVG点击
-const svgContainer = ref<HTMLElement>();
-
-const handleSVGClick = (event: MouseEvent) => {
-  const target = event.target as SVGElement;
-  
-  // 检查是否是肌肉路径点击
-  if (target.tagName === 'path' || target.tagName === 'g') {
-    // 获取点击的肌肉ID
-    const svgMuscleId = target.getAttribute('id') || target.closest('[id]')?.getAttribute('id');
-    
-    // 添加调试信息，显示所有点击的ID
-    console.log('点击的元素ID:', svgMuscleId);
-    
-    if (svgMuscleId && svgMuscleId in svgIdToOurId) {
-      const ourMuscleId = svgIdToOurId[svgMuscleId];
-      console.log('✅ 成功映射:', svgMuscleId, '->', ourMuscleId);
-      
-      // 清除其他选中状态，只选中当前肌肉
-      selectedMuscles.value.clear();
-      selectedMuscles.value.add(ourMuscleId);
-      
-      // 更新当前选中肌肉信息（会在模板中显示）
-      currentSelectedMuscle.value = muscleData[ourMuscleId as keyof typeof muscleData];
-    } else {
-      console.log('❌ 未找到映射:', svgMuscleId);
-    }
+// 切换肌肉选中状态
+const toggleMuscle = (muscleId: string) => {
+  if (isMuscleSelected(muscleId)) {
+    // 如果已选中，则移除
+    selectedPrimaryMuscleGroups.value = selectedPrimaryMuscleGroups.value.filter(id => id !== muscleId);
+    selectedSecondaryMuscleGroups.value = selectedSecondaryMuscleGroups.value.filter(id => id !== muscleId);
+  } else {
+    // 如果未选中，则添加到主要肌肉组
+    selectedPrimaryMuscleGroups.value.push(muscleId);
   }
 };
 
-// 清除选中状态
-const clearSelection = () => {
-  selectedMuscles.value.clear();
-  currentSelectedMuscle.value = null;
+// 全选/取消全选
+const toggleSelectAll = () => {
+  const allMuscleIds = Object.keys(muscleData);
+  if (isAllSelected.value) {
+    // 取消全选
+    selectedPrimaryMuscleGroups.value = [];
+    selectedSecondaryMuscleGroups.value = [];
+  } else {
+    // 全选
+    selectedPrimaryMuscleGroups.value = [...allMuscleIds];
+    selectedSecondaryMuscleGroups.value = [];
+  }
+};
+
+// 取消选择（清空所有选择）
+const clearAllSelections = () => {
+  selectedPrimaryMuscleGroups.value = [];
+  selectedSecondaryMuscleGroups.value = [];
 };
 </script>
 
@@ -277,6 +300,57 @@ const clearSelection = () => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* 控制面板 */
+.control-panel {
+  flex-shrink: 0;
+  height: calc(100vh - 8rem); /* 计算高度，减去页面padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.control-panel .bg-white {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 肌肉列表容器 */
+.muscle-list-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 24rem); /* 增加高度限制 */
+  padding-right: 4px; /* 为滚动条留出空间 */
+}
+
+.muscle-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.muscle-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.muscle-list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.muscle-list-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 肌肉项目样式 */
+.muscle-list-container label {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.muscle-list-container .text-xs {
+  line-height: 1.4;
+  word-break: break-word;
+}
+
 /* 肌肉图容器 */
 .muscle-diagram-container {
   display: flex;
@@ -306,94 +380,6 @@ const clearSelection = () => {
   border: 1px solid #e5e7eb;
 }
 
-/* 选中肌肉名称显示 */
-.selected-muscle-title {
-  display: flex;
-  justify-content: center;
-}
-
-.muscle-name-display {
-  background: #ffffff;
-  border: 2px solid #51d5ce;
-  border-radius: 8px;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  color: #1f2937;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.muscle-type-text {
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.clear-btn-small {
-  background: #51d5ce;
-  border: none;
-  color: white;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-.clear-btn-small:hover {
-  background: #0d9488;
-  transform: scale(1.1);
-}
-
-/* 覆盖显示在组件内部 */
-.muscle-info-overlay {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #51d5ce;
-  border-radius: 6px;
-  padding: 8px 12px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.muscle-name-text {
-  color: #1f2937;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.muscle-type-badge {
-  background: #51d5ce;
-  color: white;
-  font-size: 10px;
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-
-.clear-btn-inline {
-  background: #ef4444;
-  color: white;
-  border: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 10px;
-}
 
 /* 为SVG内的肌肉路径添加点击事件支持 */
 .figure-wrapper :deep(.vue-human-muscle-anatomy svg path) {
@@ -402,8 +388,8 @@ const clearSelection = () => {
 }
 
 .figure-wrapper :deep(.vue-human-muscle-anatomy svg path:hover) {
-  fill: #51d5ce !important;
-  stroke: #0d9488 !important;
+  fill: #16a085 !important;
+  stroke: #138d75 !important;
   stroke-width: 2px !important;
   filter: brightness(1.2);
 }

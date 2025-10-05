@@ -4,7 +4,7 @@
     <div class="back-button-section">
       <button @click="goBack" class="back-button">
         <span class="back-icon">←</span>
-        返回训练动作库
+        返回上一页
       </button>
     </div>
 
@@ -25,6 +25,7 @@
             secondaryHighlightColor="#16a085"
             :secondaryOpacity="0.4"
             backgroundColor="#ffffff"
+            :showLegend="true"
            />
           </div>
           <div class="muscle-info">
@@ -137,15 +138,23 @@
 import { computed, nextTick, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { HumanMuscleAnatomy } from '@lucawahlen/vue-human-muscle-anatomy';
-import { chestExerciseData } from '@/data/exercises/chest';
+import { findExerciseById } from '@/utils/exercise-lookup';
 
 const route = useRoute();
 const router = useRouter();
 
+// 返回函数 - 使用浏览器历史记录返回上一页
+const goBack = () => {
+  router.go(-1);
+};
+
 
 // 从URL参数获取动作ID
 const exerciseId = computed(() => {
-  const id = route.query.id as string;
+  // 优先从路径参数获取ID，如果没有则从查询参数获取
+  const pathId = route.params.id as string;
+  const queryId = route.query.id as string;
+  const id = pathId || queryId;
   return id ? decodeURIComponent(id) : '';
 });
 
@@ -153,52 +162,80 @@ const exerciseId = computed(() => {
 const currentExercise = computed(() => {
   if (!exerciseId.value) return null;
   
-  // 遍历胸部数据查找对应的动作
-  for (const equipmentCategory of chestExerciseData.equipmentCategories) {
-    const exercise = equipmentCategory.exercises.find(ex => ex.id === exerciseId.value);
-    if (exercise) {
-      return exercise;
-    }
-  }
-  
-  return null;
+  // 使用统一的动作查找系统
+  return findExerciseById(exerciseId.value);
 });
 
 // 肌肉组件相关的computed属性
 const selectedMuscles = computed(() => {
-  return getComponentMuscleIds(currentExercise.value?.primaryMuscles || []);
+  const muscles = getComponentMuscleIds(currentExercise.value?.primaryMuscles || []);
+  console.log('主要肌肉原始数据:', currentExercise.value?.primaryMuscles);
+  console.log('主要肌肉映射结果:', muscles);
+  return muscles;
 });
 
 const selectedSecondaryMuscles = computed(() => {
-  return getComponentMuscleIds(currentExercise.value?.secondaryMuscles || []);
+  const muscles = getComponentMuscleIds(currentExercise.value?.secondaryMuscles || []);
+  console.log('次要肌肉原始数据:', currentExercise.value?.secondaryMuscles);
+  console.log('次要肌肉映射结果:', muscles);
+  return muscles;
 });
 
 // 映射肌肉名称到组件ID
 const getComponentMuscleIds = (muscles: string[]): string[] => {
   const muscleMapping: Record<string, string> = {
+    // 胸部
     'chest': 'chest',
-    'frontDelts': 'frontDelts',
-    'sideDelts': 'sideDelts',
-    'rearDelts': 'rearDelts',
+    'upper-chest': 'chest',
+    'middle-lower-chest': 'chest',
+    
+    // 背部
+    'upper-back': 'lats', // 上背部主要对应背阔肌
+    'lower-back': 'lowerBack',
+    
+    // 肩部
+    'front-delts': 'frontDelts',
+    'middle-delts': 'sideDelts',
+    'rear-delts': 'rearDelts',
     'traps': 'traps',
+    
+    // 手臂
     'biceps': 'biceps',
+    'biceps-inner': 'biceps',
+    'biceps-outer': 'biceps',
     'triceps': 'triceps',
+    'triceps-long-head': 'triceps',
+    'triceps-short-head': 'triceps',
     'forearms': 'forearms',
-    'lats': 'lats',
-    'lowerBack': 'lowerBack',
-    'abs': 'abs',
-    'obliques': 'obliques',
-    'glutes': 'glutes',
-    'quads': 'quads',
+    
+    // 腹部
+    'upper-abs': 'abs',
+    'lower-abs': 'abs',
+    
+    // 臀部
+    'upper-glutes': 'glutes',
+    'lower-glutes': 'glutes',
+    
+    // 腿部
+    'quadriceps': 'quads',
     'hamstrings': 'hamstrings',
     'calves': 'calves',
-    'adductors': 'adductors',
-    'abductors': 'abductors',
+    
+    // 其他
     'neck': 'neck',
-    'rotatorCuffs': 'rotatorCuffs'
+    'rotatorCuffs': 'rotatorCuffs',
+    
+    // 腹斜肌
+    'obliques': 'obliques',
+    
+    // 大腿肌群
+    'adductors': 'adductors',
+    'abductors': 'abductors'
   };
   
-  return muscles.map(muscle => muscleMapping[muscle] || muscle).filter(Boolean);
+  const mappedMuscles = muscles.map(muscle => muscleMapping[muscle] || muscle).filter(Boolean);
+  console.log('肌肉映射过程:', muscles, '->', mappedMuscles);
+  return mappedMuscles;
 };
 
 // 高亮的肌肉信息描述
@@ -223,11 +260,6 @@ const highlightedMuscles = computed(() => {
   
   return muscles;
 });
-
-// 返回函数
-const goBack = () => {
-  router.push('/training/exercise-library');
-};
 
 // 动态设置次要肌肉颜色
 const updateSecondaryMusclesColors = async () => {
@@ -277,26 +309,53 @@ watch(currentExercise, () => {
 // 肌肉数据映射（从肌肉概览页面抄过来的）
 const getMuscleData = (muscleId: string) => {
   const muscleData: Record<string, any> = {
+    // 胸部
     'chest': { id: 'chest', name: '胸大肌' },
-    'lats': { id: 'lats', name: '背阔肌' },
+    'upper-chest': { id: 'chest', name: '上胸' },
+    'middle-lower-chest': { id: 'chest', name: '中下胸' },
+    
+    // 背部
+    'upper-back': { id: 'lats', name: '背阔肌' },
+    'lower-back': { id: 'lowerBack', name: '竖脊肌' },
+    
+    // 肩部
+    'front-delts': { id: 'frontDelts', name: '前三角肌' },
+    'middle-delts': { id: 'sideDelts', name: '中三角肌' },
+    'rear-delts': { id: 'rearDelts', name: '三角肌后束' },
     'traps': { id: 'traps', name: '斜方肌' },
-    'lowerBack': { id: 'lowerBack', name: '竖脊肌' },
-    'frontDelts': { id: 'frontDelts', name: '三角肌前束' },
-    'sideDelts': { id: 'sideDelts', name: '三角肌中束' },
-    'rearDelts': { id: 'rearDelts', name: '三角肌后束' },
-    'rotatorCuffs': { id: 'rotatorCuffs', name: '旋转肌袖' },
+    
+    // 手臂
     'biceps': { id: 'biceps', name: '肱二头肌' },
+    'biceps-inner': { id: 'biceps', name: '肱二头肌内侧' },
+    'biceps-outer': { id: 'biceps', name: '肱二头肌外侧' },
     'triceps': { id: 'triceps', name: '肱三头肌' },
+    'triceps-long-head': { id: 'triceps', name: '肱三头肌长头' },
+    'triceps-short-head': { id: 'triceps', name: '肱三头肌短头' },
     'forearms': { id: 'forearms', name: '前臂肌群' },
-    'abs': { id: 'abs', name: '腹直肌' },
-    'obliques': { id: 'obliques', name: '腹斜肌' },
-    'neck': { id: 'neck', name: '颈部肌群' },
-    'glutes': { id: 'glutes', name: '臀大肌' },
-    'quads': { id: 'quads', name: '股四头肌' },
+    
+    // 腹部
+    'upper-abs': { id: 'abs', name: '上腹部' },
+    'lower-abs': { id: 'abs', name: '下腹部' },
+    
+    // 臀部
+    'upper-glutes': { id: 'glutes', name: '上臀部' },
+    'lower-glutes': { id: 'glutes', name: '下臀部' },
+    
+    // 腿部
+    'quadriceps': { id: 'quads', name: '股四头肌' },
     'hamstrings': { id: 'hamstrings', name: '腘绳肌' },
+    'calves': { id: 'calves', name: '小腿肌群' },
+    
+    // 其他
+    'neck': { id: 'neck', name: '颈部肌群' },
+    'rotatorCuffs': { id: 'rotatorCuffs', name: '旋转肌袖' },
+    
+    // 腹斜肌
+    'obliques': { id: 'obliques', name: '腹斜肌' },
+    
+    // 大腿肌群
     'adductors': { id: 'adductors', name: '大腿内收肌' },
-    'abductors': { id: 'abductors', name: '大腿外展肌' },
-    'calves': { id: 'calves', name: '小腿肌群' }
+    'abductors': { id: 'abductors', name: '大腿外展肌' }
   };
   
   return muscleData[muscleId];
@@ -331,11 +390,53 @@ const getMuscleTypeText = (muscles: string[] | undefined) => {
   if (!muscles || muscles.length === 0) return '未指定';
   
   const muscleNameMap: Record<string, string> = {
+    // 胸部
     'chest': '胸部',
-    'frontDelts': '三角肌前束',
-    'sideDelts': '三角肌中束',
-    'rearDelts': '三角肌后束',
-    'triceps': '三头肌'
+    'upper-chest': '上胸',
+    'middle-lower-chest': '中下胸',
+    
+    // 背部
+    'upper-back': '背阔肌',
+    'lower-back': '竖脊肌',
+    
+    // 肩部
+    'front-delts': '前三角肌',
+    'middle-delts': '中三角肌',
+    'rear-delts': '三角肌后束',
+    'traps': '斜方肌',
+    
+    // 手臂
+    'biceps': '肱二头肌',
+    'biceps-inner': '肱二头肌内侧',
+    'biceps-outer': '肱二头肌外侧',
+    'triceps': '肱三头肌',
+    'triceps-long-head': '肱三头肌长头',
+    'triceps-short-head': '肱三头肌短头',
+    'forearms': '前臂肌群',
+    
+    // 腹部
+    'upper-abs': '上腹部',
+    'lower-abs': '下腹部',
+    
+    // 臀部
+    'upper-glutes': '上臀部',
+    'lower-glutes': '下臀部',
+    
+    // 腿部
+    'quadriceps': '股四头肌',
+    'hamstrings': '腘绳肌',
+    'calves': '小腿肌群',
+    
+    // 其他
+    'neck': '颈部肌群',
+    'rotatorCuffs': '旋转肌袖',
+    
+    // 腹斜肌
+    'obliques': '腹斜肌',
+    
+    // 大腿肌群
+    'adductors': '大腿内收肌',
+    'abductors': '大腿外展肌'
   };
   
   return muscles.map(muscle => muscleNameMap[muscle] || muscle).join('、');
