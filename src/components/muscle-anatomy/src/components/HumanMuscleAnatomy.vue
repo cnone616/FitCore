@@ -608,7 +608,7 @@ const leftLegendData = [
   { muscle: 'forearms', name: '前臂肌群', center: { male: { x: 110, y: 400 }, female: { x: 123, y: 400 } }, legend: { x: 60, y: 360 }, textSide: 'left' },
   { muscle: 'abductors', name: '大腿外展肌', center: { male: { x: 176, y: 515 }, female: { x: 176, y: 515 } }, legend: { x: 60, y: 570 }, textSide: 'left' },
   { muscle: 'quads', name: '股四头肌', center: { male: { x: 202, y: 590 }, female: { x: 202, y: 590 } }, legend: { x: 60, y: 710 }, textSide: 'left' },
-  { muscle: 'sideDelts', name: '三角肌中束', center: { male: { x: 360, y: 220 }, female: { x: 356, y: 214 } }, legend: { x: 450, y: 80 }, textSide: 'right' },
+  { muscle: 'sideDelts', name: '三角肌中束', center: { male: { x: 360, y: 205 }, female: { x: 356, y: 214 } }, legend: { x: 450, y: 80 }, textSide: 'right' },
   { muscle: 'frontDelts', name: '三角肌前束', center: { male: { x: 358, y: 236 }, female: { x: 358, y: 236 } }, legend: { x: 450, y: 150 }, textSide: 'right' },
   { muscle: 'biceps', name: '肱二头肌', center: { male: { x: 375, y: 301 }, female: { x: 362, y: 301 } }, legend: { x: 450, y: 220 }, textSide: 'right' },
   { muscle: 'triceps', name: '肱三头肌', center: { male: { x: 405, y: 310 }, female: { x: 383, y: 310 } }, legend: { x: 450, y: 290 }, textSide: 'right' },
