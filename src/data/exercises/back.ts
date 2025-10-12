@@ -1,297 +1,274 @@
-import { Exercise, MuscleGroupData } from '@/types/fitness-data'
+import { Exercise, EquipmentCategory, MuscleExercisesByEquipment } from '@/types/fitness-data'
 
-// 🫁 背部 - 上背部
-export const upperBackData: MuscleGroupData = {
-  region: 'upper-back',
-  displayName: 'Upper Back',
-  chineseName: '上背部',
-  anatomy: {
-    description: '上背部由斜方肌上部、菱形肌、三角肌后束等组成，负责肩胛骨稳定和上背部姿态',
-    origin: '斜方肌：枕外隆突、颈椎、胸椎棘突',
-    insertion: '锁骨外侧、肩胛冈',
-    innervation: '副神经、颈神经',
-    bloodSupply: '颈横动脉、肩胛上动脉'
-  },
-  functions: [
-    '肩胛骨上提和内收',
-    '维持正确姿态',
-    '支撑头部重量',
-    '肩胛骨稳定'
-  ],
-  commonExercises: [
-    'face-pulls',
-    'pull-ups',
-    'rows',
-    'rear-delt-flyes'
-  ],
-  stretchExercises: [
-    'chest-wall-stretch',
-    'upper-trap-stretch',
-    'neck-stretches'
-  ],
-  involvedJoints: ['shoulder-blade', 'cervical-spine'],
-  trainingTips: [
-    '强化三角肌后束和中下斜方肌',
-    '改善圆肩和低头姿态',
-    '注重肩胛骨稳定和控制',
-    '结合下拉和划船类动作'
-  ],
-  injuryPrevention: {
-    commonInjuries: ['颈部紧张', '斜方肌过度紧张', '颈椎问题'],
-    preventionTips: [
-      '避免过度低头',
-      '适当的上背部拉伸',
-      '强化深层稳定肌',
-      '保持正确坐姿'
-    ],
-    contraindications: [
-      '严重颈椎问题',
-      '上背部急性损伤',
-      '肩胛骨功能障碍'
-    ]
-  }
-}
-
-// 🫁 背部 - 下背部
-export const lowerBackData: MuscleGroupData = {
-  region: 'lower-back',
-  displayName: 'Lower Back',
-  chineseName: '下背部',
-  anatomy: {
-    description: '下背部主要由竖脊肌、下斜方肌、阔背肌等组成，支撑脊柱和维持核心稳定',
-    origin: '竖脊肌：骶骨、腰椎',
-    insertion: '肋骨、脊椎棘突',
-    innervation: '脊神经后支',
-    bloodSupply: '腰动脉、骶动脉'
-  },
-  functions: [
-    '脊柱伸展',
-    '躯干稳定',
-    '负重支撑',
-    '躯干旋转'
-  ],
-  commonExercises: [
-    'deadlifts',
-    'back-extensions',
-    'hyperextensions',
-    'rows'
-  ],
-  stretchExercises: [
-    'childs-pose',
-    'cat-cow-stretch',
-    'lower-back-rotation'
-  ],
-  involvedJoints: ['lumbar-spine', 'sacrum'],
-  trainingTips: [
-    '先强化核心肌群基础',
-    '循序渐进增加训练强度',
-    '重视动作规范',
-    '结合功能性训练'
-  ],
-  injuryPrevention: {
-    commonInjuries: ['腰椎间盘突出', '肌肉拉伤', '坐骨神经痛'],
-    preventionTips: [
-      '充分热身',
-      '保持核心稳定',
-      '避免过度弯曲',
-      '强化髋部屈肌'
-    ],
-    contraindications: [
-      '急性腰椎间盘突出',
-      '严重腰椎疾病',
-      '脊柱侧弯禁忌'
-    ]
-  }
-}
-
-// 上背部动作数据数组
-export const upperBackExercises: Exercise[] = [
+// 🫴 背部 - 自重动作
+const backBodyweightExercises: Exercise[] = [
   {
     id: 'pull-up',
-    name: 'Pull-ups',
+    name: 'Pull Up',
     chineseName: '引体向上',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['bodyweight'],
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps', 'rearDelts'],
+    equipment: ['bodyweight', 'pull-up-bar'],
     difficulty: 'intermediate',
-    description: '经典的上肢拉力训练动作，主要锻炼背阔肌和肱二头肌',
+    description: '宽握肩内收，经典背部训练动作',
     instructions: [
       '双手握住单杠，握距略宽于肩',
-      '身体悬垂，核心收紧，保持身体稳定',
-      '肩胛骨下沉，启动背部肌肉',
-      '向上拉至下巴过杠，挤压背部肌肉',
-      '缓慢下降至完全伸展，控制下降速度',
-      '保持呼吸节奏，上拉时呼气，下降时吸气'
-    ]
-  },
-  {
-    id: 'assisted-pull-up',
-    name: 'Pull-ups (Assisted)',
-    chineseName: '引体向上（可用弹力带减重）',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['bodyweight', 'resistance-band'],
-    difficulty: 'beginner',
-    description: '引体向上背部训练，可用弹力带辅助',
-    instructions: [
-      '双手握住单杠，略宽于肩',
       '身体悬垂，核心收紧',
+      '肩胛骨下沉，启动背部肌肉',
       '向上拉至下巴过杠',
-      '缓慢下降至完全伸展',
-      '可用弹力带辅助减重'
-    ]
-  },
-  {
-    id: 'wide-grip-pull-ups',
-    name: 'Wide Grip Pull-ups',
-    chineseName: '宽握引体向上',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['rear-delts', 'biceps'],
-    equipment: ['bodyweight'],
-    difficulty: 'advanced',
-    description: '宽握距的引体向上，更加强调背阔肌和上背部的发展',
-    instructions: [
-      '双手握住单杠，握距明显宽于肩',
-      '身体悬垂，核心收紧',
-      '肩胛骨下沉，启动背部肌肉',
-      '向上拉至胸部接近单杠',
-      '挤压背部肌肉，特别是背阔肌',
+      '挤压背阔肌',
       '缓慢下降至完全伸展'
     ]
   },
   {
-    id: 'resistance-band-high-pull',
-    name: 'Resistance Band High Pull',
-    chineseName: '弹力带高位下拉',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['resistance-band'],
+    id: 'assisted-pull-up',
+    name: 'Assisted Pull Up',
+    chineseName: '引体向上(可用弹力带减重)',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps', 'rearDelts'],
+    equipment: ['bodyweight', 'resistance-band'],
     difficulty: 'beginner',
-    description: '弹力带高位下拉，模拟引体向上',
+    description: '弹力带辅助的引体向上，适合初学者',
     instructions: [
-      '弹力带固定在头顶高度',
-      '双手握住弹力带',
-      '向下拉至胸部',
-      '挤压背部肌肉',
+      '双手握住单杠，略宽于肩',
+      '弹力带挂在单杠上',
+      '膝盖或脚踩在弹力带上',
+      '向上拉至下巴过杠',
+      '缓慢下降至完全伸展'
+    ]
+  },
+  {
+    id: 'wide-grip-pull-ups',
+    name: 'Wide Grip Pull Up',
+    chineseName: '宽握引体向上',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps', 'rearDelts'],
+    equipment: ['bodyweight', 'pull-up-bar'],
+    difficulty: 'advanced',
+    description: '宽握距强化背阔肌外侧',
+    instructions: [
+      '双手握住单杠，握距明显宽于肩',
+      '身体悬垂，核心收紧',
+      '向上拉至胸部接近单杠',
+      '挤压背阔肌外侧',
+      '缓慢下降'
+    ]
+  }
+]
+
+// 🏋️‍♂️ 背部 - 杠铃动作
+const backBarbellExercises: Exercise[] = [
+  {
+    id: 'barbell-row',
+    name: 'Barbell Row',
+    chineseName: '杠铃俯身划船',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['rearDelts', 'biceps', 'lowerBack'],
+    equipment: ['barbell'],
+    difficulty: 'intermediate',
+    description: '宽握肩水平外展，训练背阔肌和中背部',
+    instructions: [
+      '双脚与肩同宽站立',
+      '俯身约45度，保持背部挺直',
+      '宽握杠铃，略宽于肩',
+      '将杠铃拉向腹部',
+      '挤压肩胛骨',
+      '缓慢下放至起始位置'
+    ]
+  }
+]
+
+// 🏋️‍♂️ 背部 - 哑铃动作
+const backDumbbellExercises: Exercise[] = [
+  {
+    id: 'dumbbell-row',
+    name: 'Dumbbell Row',
+    chineseName: '单边哑铃划船',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['rearDelts', 'biceps'],
+    equipment: ['dumbbell', 'bench'],
+    difficulty: 'beginner',
+    description: '单侧划船，肩伸动作，重点训练背阔肌',
+    instructions: [
+      '一只手和膝盖支撑在凳子上',
+      '另一只手握哑铃自然下垂',
+      '保持背部平直',
+      '将哑铃拉向腰部',
+      '肘部贴近身体',
+      '缓慢下放'
+    ]
+  },
+  {
+    id: 'dumbbell-rear-fly',
+    name: 'Dumbbell Rear Fly',
+    chineseName: '哑铃俯身飞鸟',
+    primaryMuscles: ['rearDelts'],
+    secondaryMuscles: ['lats', 'traps'],
+    equipment: ['dumbbell'],
+    difficulty: 'beginner',
+    description: '肩水平外展，重点训练肩后束',
+    instructions: [
+      '俯身约90度，背部保持平直',
+      '双手各持一个哑铃',
+      '保持肘部微弯',
+      '向两侧抬起哑铃',
+      '挤压肩胛骨',
+      '缓慢回到起始位置'
+    ]
+  }
+]
+
+// 🔗 背部 - 绳索动作
+const backCableExercises: Exercise[] = [
+  {
+    id: 'seated-cable-row',
+    name: 'Seated Cable Row',
+    chineseName: '坐姿器械划船',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['rearDelts', 'biceps'],
+    equipment: ['cable-machine'],
+    difficulty: 'beginner',
+    description: '窄握肩伸，重点训练背阔肌',
+    instructions: [
+      '坐在划船器械上',
+      '双脚踩在踏板上',
+      '窄握手柄',
+      '拉向腹部',
+      '挤压肩胛骨',
+      '缓慢回放'
+    ]
+  },
+  {
+    id: 'straight-arm-pulldown',
+    name: 'Straight Arm Pulldown',
+    chineseName: '龙门架直臂下压',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['chest', 'abs'],
+    equipment: ['cable-machine'],
+    difficulty: 'intermediate',
+    description: '肩伸动作，孤立训练背阔肌',
+    instructions: [
+      '站在龙门架前',
+      '双手握住高位手柄',
+      '保持手臂伸直',
+      '向下压至大腿前侧',
+      '挤压背阔肌',
       '缓慢回到起始位置'
     ]
   },
   {
-    id: 'resistance-band-low-pull',
-    name: 'Resistance Band Low Pull',
-    chineseName: '弹力带俯身划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['upper-back', 'rear-delts', 'biceps'],
-    equipment: ['resistance-band'],
-    difficulty: 'beginner',
-    description: '弹力带俯身划船，重点中背部',
+    id: 'cable-reverse-fly',
+    name: 'Cable Reverse Fly',
+    chineseName: '龙门架反向飞鸟',
+    primaryMuscles: ['rearDelts'],
+    secondaryMuscles: ['lats', 'traps'],
+    equipment: ['cable-machine'],
+    difficulty: 'intermediate',
+    description: '肩水平外展，训练肩后束',
     instructions: [
-      '弹力带固定在低位',
-      '俯身45度，核心收紧',
-      '双手握住弹力带',
-      '向后拉至腹部',
-      '挤压肩胛骨'
+      '站在龙门架中间',
+      '交叉握住对侧手柄',
+      '向两侧拉开',
+      '保持肘部微弯',
+      '挤压肩后束',
+      '缓慢回到起始位置'
     ]
   },
   {
-    id: 'single-dumbbell-row',
-    name: 'Single Dumbbell Row',
-    chineseName: '单边哑铃划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['upper-back', 'rear-delts', 'biceps'],
-    equipment: ['dumbbell', 'bench'],
-    difficulty: 'intermediate',
-    description: '单边哑铃划船，重点背部',
+    id: 'seated-row-horizontal-elbow',
+    name: 'Seated Row (Horizontal Elbow)',
+    chineseName: '坐姿器械/绳索划船(水平开肘)',
+    primaryMuscles: ['rearDelts', 'lats'],
+    secondaryMuscles: ['biceps', 'traps'],
+    equipment: ['cable-machine'],
+    difficulty: 'beginner',
+    description: '肩水平外展，重点训练肩后束和中背部',
     instructions: [
-      '一手撑在凳子上，一手持哑铃',
-      '俯身，背部挺直',
-      '哑铃拉至腹部',
-      '挤压背部肌肉',
-      '缓慢下降哑铃'
+      '坐在划船器械上',
+      '双脚踩稳',
+      '宽握手柄',
+      '向后拉，肘部水平展开',
+      '挤压肩胛骨',
+      '缓慢回放'
     ]
-  },
+  }
+]
+
+// 📊 背部 - 其他器械(T杆)
+const backOtherExercises: Exercise[] = [
+  {
+    id: 't-bar-row',
+    name: 'T-Bar Row',
+    chineseName: 'T杆俯身划船',
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['rearDelts', 'biceps', 'lowerBack'],
+    equipment: ['t-bar'],
+    difficulty: 'intermediate',
+    description: '中握肩伸混合肩水平外展',
+    instructions: [
+      '跨站在T杆上',
+      '俯身握住手柄',
+      '保持背部挺直',
+      '将T杆拉向胸部',
+      '挤压肩胛骨',
+      '缓慢下放'
+    ]
+  }
+]
+
+// 🏥 背部 - 器械动作
+const backMachineExercises: Exercise[] = [
   {
     id: 'lat-pulldown',
     name: 'Lat Pulldown',
     chineseName: '高位下拉',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['cable-machine'],
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps', 'rearDelts'],
+    equipment: ['machine'],
     difficulty: 'beginner',
-    description: '器械高位下拉，重点背阔肌',
+    description: '中握肩内收混合肩伸',
     instructions: [
       '坐在下拉器械上',
-      '双手宽握拉杆',
+      '调整膝盖垫',
+      '中握距握住横杆',
       '向下拉至胸部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
+      '挤压背阔肌',
+      '缓慢回放'
     ]
   },
   {
     id: 'machine-pulldown',
     name: 'Machine Pulldown',
     chineseName: '器械下拉',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps'],
     equipment: ['machine'],
     difficulty: 'beginner',
-    description: '器械下拉，轨迹固定',
+    description: '窄握肩伸',
     instructions: [
-      '坐在器械座椅上',
-      '双手握住下拉手柄',
+      '坐在器械上',
+      '调整座椅高度',
+      '窄握手柄',
       '向下拉至胸部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  },
-  {
-    id: 'barbell-row',
-    name: 'Barbell Row',
-    chineseName: '杠铃划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['upper-back', 'rear-delts', 'biceps'],
-    equipment: ['barbell'],
-    difficulty: 'intermediate',
-    description: '杠铃划船，重点背部',
-    instructions: [
-      '俯身45度，双手握杠铃',
-      '背部挺直，核心收紧',
-      '杠铃拉至腹部',
-      '挤压背部肌肉',
-      '缓慢下降杠铃'
-    ]
-  },
-  {
-    id: 'seated-cable-row',
-    name: 'Seated Cable Row',
-    chineseName: '坐姿绳索划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['upper-back', 'rear-delts', 'biceps'],
-    equipment: ['cable-machine'],
-    difficulty: 'beginner',
-    description: '坐姿绳索划船，重点中背部',
-    instructions: [
-      '坐在绳索器械上',
-      '双脚踩踏板，膝盖微弯',
-      '双手握住手柄',
-      '向后拉至腹部',
-      '挤压肩胛骨'
-    ]
-  },
-  {
-    id: 'straight-arm-pulldown',
-    name: 'Straight Arm Pulldown',
-    chineseName: '直臂下拉',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['rear-delts'],
-    equipment: ['cable-machine'],
-    difficulty: 'intermediate',
-    description: '直臂下拉，孤立背阔肌',
-    instructions: [
-      '站在绳索器械前',
-      '双手握住绳索',
-      '直臂向下拉至大腿',
       '挤压背阔肌',
+      '缓慢回放'
+    ]
+  },
+  {
+    id: 'reverse-peck-deck',
+    name: 'Reverse Peck Deck',
+    chineseName: '蝴蝶机反向飞鸟',
+    primaryMuscles: ['rearDelts'],
+    secondaryMuscles: ['lats', 'traps'],
+    equipment: ['machine'],
+    difficulty: 'beginner',
+    description: '肩水平外展，孤立训练肩后束',
+    instructions: [
+      '坐在蝴蝶机上',
+      '胸部贴靠垫子',
+      '双手握住手柄',
+      '向后拉开',
+      '挤压肩后束',
       '缓慢回到起始位置'
     ]
   },
@@ -299,139 +276,55 @@ export const upperBackExercises: Exercise[] = [
     id: 'rowing-exercise',
     name: 'Rowing Exercise',
     chineseName: '划船动作',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['cable-machine'],
+    primaryMuscles: ['lats'],
+    secondaryMuscles: ['biceps', 'rearDelts'],
+    equipment: ['machine'],
     difficulty: 'beginner',
-    description: '划船动作，重点背部肌肉',
+    description: '肩胛骨后缩，训练中背部',
     instructions: [
       '坐在划船器械上',
       '双脚踩稳踏板',
       '双手握住拉杆',
       '向后拉至胸部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  },
-  {
-    id: 't-bar-row',
-    name: 'T-Bar Row',
-    chineseName: 'T杆俯身划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['barbell'],
-    difficulty: 'intermediate',
-    description: 'T杆俯身划船，重点中背部',
-    instructions: [
-      '跨坐在T杆上',
-      '俯身握住把手',
-      '向后拉至腹部',
-      '挤压背部肌肉',
+      '挤压肩胛骨后缩',
       '缓慢回到起始位置'
     ]
   }
 ]
 
-// 下背部动作数据数组（暂时留空，待后续填充）
-export const lowerBackExercises: Exercise[] = []
-
-// 弹力绳背部动作
-export const resistanceBandBackExercises: Exercise[] = [
-  {
-    id: 'home-resistance-band-high-pull',
-    name: 'Resistance Band High Pull',
-    chineseName: '弹力带高位下拉',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['resistance-band'],
-    difficulty: 'beginner',
-    description: '弹力带高位下拉，重点背阔肌',
-    instructions: [
-      '弹力带固定在门框上方',
-      '双手握住弹力带',
-      '向下拉至胸部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  },
-  {
-    id: 'home-resistance-band-low-pull',
-    name: 'Resistance Band Low Pull',
-    chineseName: '弹力带俯身划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['resistance-band'],
-    difficulty: 'beginner',
-    description: '弹力带俯身划船，重点中背部',
-    instructions: [
-      '弹力带固定在低位',
-      '俯身握住弹力带',
-      '向后拉至腹部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  },
-  {
-    id: 'home-resistance-band-wide-row',
-    name: 'Resistance Band Wide Row',
-    chineseName: '弹力带划船（水平开肘）',
-    primaryMuscles: ['rear-delts'],
-    secondaryMuscles: ['upper-back', 'biceps'],
-    equipment: ['resistance-band'],
-    difficulty: 'intermediate',
-    description: '弹力带划船，重点三角肌后束',
-    instructions: [
-      '弹力带固定在胸部高度',
-      '双手握住弹力带',
-      '肘部向两侧打开',
-      '向后拉至胸部',
-      '挤压三角肌后束'
-    ]
-  },
-  {
-    id: 'home-dumbbell-row',
-    name: 'Home Dumbbell Row',
-    chineseName: '单边哑铃划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['dumbbell'],
-    difficulty: 'intermediate',
-    description: '居家单边哑铃划船，重点中背部',
-    instructions: [
-      '单手持哑铃',
-      '另一手支撑在凳子上',
-      '向后拉至腹部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  },
-  {
-    id: 'dumbbell-row',
-    name: 'Dumbbell Row',
-    chineseName: '单边哑铃划船',
-    primaryMuscles: ['upper-back'],
-    secondaryMuscles: ['biceps', 'rear-delts'],
-    equipment: ['dumbbell'],
-    difficulty: 'intermediate',
-    description: '单边哑铃划船，重点中背部',
-    instructions: [
-      '单手持哑铃',
-      '另一手支撑在凳子上',
-      '向后拉至腹部',
-      '挤压背部肌肉',
-      '缓慢回到起始位置'
-    ]
-  }
-]
-
-// 导出所有背部相关数据
-export const backExerciseData = {
-  upperBack: {
-    muscleData: upperBackData,
-    exercises: upperBackExercises
-  },
-  lowerBack: {
-    muscleData: lowerBackData,
-    exercises: lowerBackExercises
-  }
+// 📊 完整的背部数据（按器械分类）
+export const backExerciseData: MuscleExercisesByEquipment = {
+  muscleRegion: 'back',
+  equipmentCategories: [
+    {
+      category: 'bodyweight',
+      chineseName: '自重',
+      exercises: backBodyweightExercises
+    },
+    {
+      category: 'barbell',
+      chineseName: '杠铃',
+      exercises: backBarbellExercises
+    },
+    {
+      category: 'dumbbell',
+      chineseName: '哑铃',
+      exercises: backDumbbellExercises
+    },
+    {
+      category: 'cable',
+      chineseName: '绳索',
+      exercises: backCableExercises
+    },
+    {
+      category: 'other',
+      chineseName: 'T杆',
+      exercises: backOtherExercises
+    },
+    {
+      category: 'machine',
+      chineseName: '器械',
+      exercises: backMachineExercises
+    }
+  ]
 }

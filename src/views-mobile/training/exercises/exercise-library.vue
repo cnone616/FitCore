@@ -63,16 +63,16 @@
       </div>
 
       <!-- 右侧内容区域 -->
-      <div class="content-area">
+      <div class="content-area" ref="contentAreaRef">
         <!-- 器械过滤标签 -->
         <div class="equipment-filters">
           <div class="filter-tabs">
-            <button 
-              v-for="equipment in equipmentTypes" 
+            <button
+              v-for="equipment in equipmentTypes"
               :key="equipment.id"
               class="filter-tab"
               :class="{ active: selectedEquipment === equipment.id }"
-              @click="selectEquipment(equipment.id)"
+              @click="scrollToEquipment(equipment.id)"
             >
               {{ equipment.name }}
             </button>
@@ -82,9 +82,10 @@
         <!-- 动作展示区域 -->
         <div class="exercises-display">
           <!-- 按器械分组显示 -->
-          <div 
-            v-for="equipmentGroup in currentExercises" 
+          <div
+            v-for="equipmentGroup in currentExercises"
             :key="equipmentGroup.category"
+            :id="`equipment-${equipmentGroup.category}`"
             class="equipment-section"
           >
             <h3 class="equipment-title">{{ equipmentGroup.chineseName }}</h3>
@@ -104,7 +105,7 @@
                   <!-- 标签 -->
                   <div class="exercise-tags">
                     <span class="tag explanation" v-if="exercise.description">讲解</span>
-                    <span class="tag count" v-if="exercise.count">{{ exercise.count }}次</span>
+                    <!-- <span class="tag count" v-if="exercise.count">{{ exercise.count }}次</span> -->
                   </div>
                 </div>
                 <!-- 动作名称 -->
@@ -121,9 +122,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { chestExerciseData } from '@/data/exercises/chest';
+import { backExerciseData } from '@/data/exercises/back';
+import { shouldersExerciseData } from '@/data/exercises/shoulders';
+import { bicepsExerciseData } from '@/data/exercises/biceps';
+import { tricepsExerciseData } from '@/data/exercises/triceps';
+import { legsExerciseData } from '@/data/exercises/legs';
+import { absExerciseData } from '@/data/exercises/abs';
 
 const router = useRouter();
 
@@ -131,6 +138,7 @@ const router = useRouter();
 const searchQuery = ref('');
 const selectedCategory = ref('chest');
 const selectedSubcategory = ref('upper-chest');
+const contentAreaRef = ref<HTMLElement | null>(null);
 
 // 动作分类数据
 const exerciseCategories = ref([
@@ -254,51 +262,36 @@ const currentExercises = computed(() => {
     return chestExerciseData.equipmentCategories;
   }
   
-  // 其他分类暂时返回空数据（后续会添加其他部位的数据）
+  // 背部数据
   if (selectedCategory.value === 'back') {
-    return [
-      {
-        category: 'placeholder',
-        chineseName: '背部动作',
-        exercises: [
-          {
-            id: 'back-placeholder',
-            name: 'Back Placeholder',
-            chineseName: '背部动作数据开发中',
-            primaryMuscles: ['lats'],
-            equipment: ['placeholder'],
-            difficulty: 'intermediate',
-            description: '背部动作数据暂未添加',
-            instructions: ['数据开发中'],
-            count: '0次'
-          }
-        ]
-      }
-    ];
+    return backExerciseData.equipmentCategories;
   }
-  
+
+  // 肩部数据
+  if (selectedCategory.value === 'shoulders') {
+    return shouldersExerciseData.equipmentCategories;
+  }
+
+  // 二头肌数据
+  if (selectedCategory.value === 'biceps') {
+    return bicepsExerciseData.equipmentCategories;
+  }
+
+  // 三头肌数据
+  if (selectedCategory.value === 'triceps') {
+    return tricepsExerciseData.equipmentCategories;
+  }
+
+  // 腿部数据
   if (selectedCategory.value === 'legs') {
-    return [
-      {
-        category: 'placeholder',
-        chineseName: '腿部动作',
-        exercises: [
-          {
-            id: 'legs-placeholder',
-            name: 'Legs Placeholder',
-            chineseName: '腿部动作数据开发中',
-            primaryMuscles: ['quads'],
-            equipment: ['placeholder'],
-            difficulty: 'intermediate',
-            description: '腿部动作数据暂未添加',
-            instructions: ['数据开发中'],
-            count: '0次'
-          }
-        ]
-      }
-    ];
+    return legsExerciseData.equipmentCategories;
   }
-  
+
+  // 腹部数据
+  if (selectedCategory.value === 'abs') {
+    return absExerciseData.equipmentCategories;
+  }
+
   if (selectedCategory.value === 'shoulders') {
     return [
       {
@@ -314,7 +307,7 @@ const currentExercises = computed(() => {
             difficulty: 'intermediate',
             description: '肩部动作数据暂未添加',
             instructions: ['数据开发中'],
-            count: '0次'
+            count: '0'
           }
         ]
       }
@@ -336,7 +329,7 @@ const currentExercises = computed(() => {
           difficulty: 'intermediate',
           description: `${getCategoryName(selectedCategory.value)}动作数据暂未添加`,
           instructions: ['数据开发中'],
-          count: '0次'
+          count: '0'
         }
       ]
     }
@@ -391,6 +384,61 @@ const selectSubcategory = (subcategoryId: string) => {
 const selectEquipment = (equipmentId: string) => {
   selectedEquipment.value = equipmentId;
 };
+
+// 滚动到指定器械分类（锚点效果）
+const scrollToEquipment = (equipmentId: string) => {
+  selectedEquipment.value = equipmentId;
+
+  const targetElement = document.getElementById(`equipment-${equipmentId}`);
+  if (targetElement && contentAreaRef.value) {
+    const container = contentAreaRef.value;
+    const targetOffset = targetElement.offsetTop - container.offsetTop;
+
+    // 滚动到目标位置，减去sticky header的高度(约80px)
+    container.scrollTo({
+      top: targetOffset - 80,
+      behavior: 'smooth'
+    });
+  }
+};
+
+// 滚动监听 - 自动高亮当前可见的器械分类
+const handleScroll = () => {
+  if (!contentAreaRef.value) return;
+
+  const container = contentAreaRef.value;
+  const scrollTop = container.scrollTop;
+  const sections = document.querySelectorAll('.equipment-section');
+
+  // 找到当前滚动位置对应的section
+  let currentSection = '';
+  sections.forEach((section) => {
+    const sectionTop = (section as HTMLElement).offsetTop - container.offsetTop - 100;
+    if (scrollTop >= sectionTop) {
+      const id = section.getAttribute('id');
+      if (id) {
+        currentSection = id.replace('equipment-', '');
+      }
+    }
+  });
+
+  if (currentSection && currentSection !== selectedEquipment.value) {
+    selectedEquipment.value = currentSection;
+  }
+};
+
+// 生命周期钩子
+onMounted(() => {
+  if (contentAreaRef.value) {
+    contentAreaRef.value.addEventListener('scroll', handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (contentAreaRef.value) {
+    contentAreaRef.value.removeEventListener('scroll', handleScroll);
+  }
+});
 
 // 点击动作卡片跳转到详情页
 const goToExerciseDetail = (exercise: any) => {
@@ -565,7 +613,12 @@ const goToExerciseDetail = (exercise: any) => {
 
 /* 器械过滤标签 */
 .equipment-filters {
-  margin-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #f8f9fa;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .filter-tabs {

@@ -1,53 +1,38 @@
 import { Exercise } from '@/types/fitness-data'
-import { chestExerciseData, missingChestExercises, resistanceBandChestExercises } from '@/data/exercises/chest'
-import { upperBackExercises, lowerBackExercises, resistanceBandBackExercises } from '@/data/exercises/back'
-import { frontDeltsExercises, middleDeltsExercises, rearDeltsExercises, trappedExercises, resistanceBandShoulderExercises } from '@/data/exercises/shoulders'
-import { bicepsInnerExercises, bicepsOuterExercises, resistanceBandBicepsExercises } from '@/data/exercises/biceps'
-import { tricepsLongHeadExercises, tricepsShortHeadExercises, resistanceBandTricepsExercises } from '@/data/exercises/triceps'
-import { quadricepsExercises, hamstringExercises, resistanceBandLegExercises } from '@/data/exercises/legs'
-import { upperGlutesExercises, lowerGlutesExercises, resistanceBandGlutesExercises } from '@/data/exercises/glutes'
-import { upperAbsExercises, lowerAbsExercises } from '@/data/exercises/abs'
+import { chestExerciseData } from '@/data/exercises/chest'
+import { backExerciseData } from '@/data/exercises/back'
+import { shouldersExerciseData } from '@/data/exercises/shoulders'
+import { bicepsExerciseData } from '@/data/exercises/biceps'
+import { tricepsExerciseData } from '@/data/exercises/triceps'
+import { legsExerciseData } from '@/data/exercises/legs'
+import { glutesExerciseData } from '@/data/exercises/glutes'
+import { absExerciseData } from '@/data/exercises/abs'
 
 // 所有动作库的集合
-const allExerciseLibraries = [
+const allExerciseLibraries: Exercise[] = [
   // 胸部动作
   ...chestExerciseData.equipmentCategories.flatMap(category => category.exercises),
-  ...missingChestExercises,
-  ...resistanceBandChestExercises,
-  
+
   // 背部动作
-  ...upperBackExercises,
-  ...lowerBackExercises,
-  ...resistanceBandBackExercises,
-  
+  ...backExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
   // 肩部动作
-  ...frontDeltsExercises,
-  ...middleDeltsExercises,
-  ...rearDeltsExercises,
-  ...trappedExercises,
-  ...resistanceBandShoulderExercises,
-  
-  // 手臂动作
-  ...bicepsInnerExercises,
-  ...bicepsOuterExercises,
-  ...resistanceBandBicepsExercises,
-  ...tricepsLongHeadExercises,
-  ...tricepsShortHeadExercises,
-  ...resistanceBandTricepsExercises,
-  
+  ...shouldersExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
+  // 二头肌动作
+  ...bicepsExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
+  // 三头肌动作
+  ...tricepsExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
   // 腿部动作
-  ...quadricepsExercises,
-  ...hamstringExercises,
-  ...resistanceBandLegExercises,
-  
-  // 臀大肌动作
-  ...upperGlutesExercises,
-  ...lowerGlutesExercises,
-  ...resistanceBandGlutesExercises,
-  
+  ...legsExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
+  // 臀部动作
+  ...glutesExerciseData.equipmentCategories.flatMap(category => category.exercises),
+
   // 腹部动作
-  ...upperAbsExercises,
-  ...lowerAbsExercises
+  ...absExerciseData.equipmentCategories.flatMap(category => category.exercises)
 ]
 
 // 创建动作ID到动作对象的映射
@@ -79,8 +64,8 @@ export function getAllExercises(): Exercise[] {
  * @returns 该肌肉群的动作数组
  */
 export function getExercisesByMuscleGroup(muscleGroup: string): Exercise[] {
-  return allExerciseLibraries.filter(exercise => 
-    exercise.primaryMuscles.includes(muscleGroup as any) || 
+  return allExerciseLibraries.filter(exercise =>
+    exercise.primaryMuscles.includes(muscleGroup as any) ||
     (exercise.secondaryMuscles && exercise.secondaryMuscles.includes(muscleGroup as any))
   )
 }
@@ -91,7 +76,7 @@ export function getExercisesByMuscleGroup(muscleGroup: string): Exercise[] {
  * @returns 该器械的动作数组
  */
 export function getExercisesByEquipment(equipment: string): Exercise[] {
-  return allExerciseLibraries.filter(exercise => 
+  return allExerciseLibraries.filter(exercise =>
     exercise.equipment.includes(equipment as any)
   )
 }
@@ -103,7 +88,7 @@ export function getExercisesByEquipment(equipment: string): Exercise[] {
  */
 export function searchExercises(query: string): Exercise[] {
   const lowerQuery = query.toLowerCase()
-  return allExerciseLibraries.filter(exercise => 
+  return allExerciseLibraries.filter(exercise =>
     exercise.name.toLowerCase().includes(lowerQuery) ||
     exercise.chineseName.toLowerCase().includes(lowerQuery) ||
     exercise.description.toLowerCase().includes(lowerQuery)

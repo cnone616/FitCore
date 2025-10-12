@@ -2,7 +2,7 @@ import { Exercise, MuscleGroupData } from '@/types/fitness-data'
 
 // 🔧 核心稳定
 export const coreData: MuscleGroupData = {
-  region: 'core',
+  region: 'abs',
   displayName: 'Core Stability',
   chineseName: '核心稳定',
   anatomy: {

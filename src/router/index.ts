@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/nutrition/fat-loss/:id',
     name: 'NutritionFatLossDetail',
-    component: () => import('@/views/nutrition/fat-loss/detail.vue'),
+    component: () => import('@/components/detail-wrappers/FatLossDetailWrapper.vue'),
     meta: {
       title: '减脂方案详情'
     }
@@ -53,7 +53,7 @@ const routes = [
   {
     path: '/nutrition/muscle-gain/:id',
     name: 'NutritionMuscleGainDetail',
-    component: () => import('@/views/nutrition/muscle-gain/detail.vue'),
+    component: () => import('@/components/detail-wrappers/MuscleGainDetailWrapper.vue'),
     meta: {
       title: '增肌方案详情'
     }
@@ -93,7 +93,7 @@ const routes = [
   {
     path: '/nutrition/faq/:id',
     name: 'NutritionFaqDetail',
-    component: () => import('@/views/nutrition/faq/detail.vue'),
+    component: () => import('@/components/detail-wrappers/FaqDetailWrapper.vue'),
     meta: {
       title: '问答详情'
     }
@@ -117,7 +117,7 @@ const routes = [
   {
     path: '/training/exercises/detail',
     name: 'ExerciseDetail',
-    component: () => import('@/views/training/exercises/exercise-detail.vue'),
+    component: () => import('@/components/detail-wrappers/ExerciseDetailWrapper.vue'),
     meta: {
       title: '动作详情'
     }
@@ -173,7 +173,7 @@ const routes = [
   {
     path: '/training/exercise/:id',
     name: 'ExerciseDetailById',
-    component: () => import('@/views/training/exercises/exercise-detail.vue'),
+    component: () => import('@/components/detail-wrappers/ExerciseDetailWrapper.vue'),
     meta: {
       title: '动作详情'
     }
