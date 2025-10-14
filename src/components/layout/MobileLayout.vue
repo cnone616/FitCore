@@ -149,13 +149,13 @@ const closeMenu = () => {
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 56px;
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   z-index: 1000;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
 }
 
 .header-content {
@@ -206,10 +206,10 @@ const closeMenu = () => {
 
 .mobile-nav {
   position: fixed;
-  top: 60px;
+  top: 56px;
   left: -100%;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 56px);
   background-color: var(--color-surface);
   border-right: 1px solid var(--color-border);
   z-index: 999;
@@ -222,18 +222,18 @@ const closeMenu = () => {
 }
 
 .nav-content {
-  padding: 1rem;
+  padding: 0.75rem 0.9rem;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
   color: var(--color-text);
   text-decoration: none;
   border-bottom: 1px solid var(--color-border);
   transition: color 0.2s ease;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nav-item:hover {
@@ -241,7 +241,7 @@ const closeMenu = () => {
 }
 
 .nav-item.sub-item {
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   font-size: 0.9rem;
   opacity: 0.85;
 }
@@ -261,9 +261,9 @@ const closeMenu = () => {
 
 .mobile-main {
   flex: 1;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 1rem;
+  margin-top: 56px;
+  margin-bottom: 56px;
+  padding: 0.75rem;
   transition: transform 0.3s ease;
 }
 
@@ -276,7 +276,7 @@ const closeMenu = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 56px;
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
   display: flex;
@@ -292,8 +292,8 @@ const closeMenu = () => {
   color: var(--color-text-muted);
   text-decoration: none;
   transition: all 0.2s ease;
-  font-size: 0.7rem;
-  gap: 4px;
+  font-size: 0.68rem;
+  gap: 3px;
 }
 
 .bottom-nav-item.active {

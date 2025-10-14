@@ -64,7 +64,7 @@ const toMuscleOverview = () => router.push('/anatomy/muscle-overview');
 }
 
 .container {
-  padding: 1.5rem 1.25rem 4rem;
+  padding: 1.1rem 0.9rem 2.5rem;
   max-width: 960px;
   margin: 0 auto;
 }
@@ -72,83 +72,83 @@ const toMuscleOverview = () => router.push('/anatomy/muscle-overview');
 .page-header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .back-btn {
   align-self: flex-start;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.85rem;
   border-radius: 999px;
   border: 1px solid rgba(0,0,0,0.08);
   background: white;
   color: #334155;
-  font-size: 0.9rem;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  font-size: 0.85rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
 }
 
 .page-header h1 {
-  font-size: 2.25rem;
+  font-size: 1.95rem;
   font-weight: 700;
   color: #1f2937;
 }
 
 .page-header p {
   color: #64748b;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .summary-card {
   background: white;
   border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.08);
-  margin-bottom: 2rem;
+  padding: 1.1rem;
+  box-shadow: 0 10px 26px rgba(30, 64, 175, 0.07);
+  margin-bottom: 1.5rem;
 }
 
 .summary-card h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .summary-card ul {
   list-style: disc;
-  margin-left: 1.2rem;
+  margin-left: 1.1rem;
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .section-grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .feature-card {
   background: white;
   border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 18px 40px rgba(99, 102, 241, 0.08);
+  padding: 1.1rem;
+  box-shadow: 0 14px 32px rgba(99, 102, 241, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .feature-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #1e293b;
 }
 
 .feature-card p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .feature-card .cta {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #2563eb;
 }

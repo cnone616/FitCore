@@ -358,53 +358,53 @@ const selectRightLegend = () => {
 .muscle-debug-page {
   min-height: 100vh;
   background: #f5f7fb;
-  padding: 1.25rem 1rem 3rem;
+  padding: 1rem 0.75rem 2.25rem;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .header h1 {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: #1f2937;
 }
 
 .header p {
   color: #64748b;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .debug-layout {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .control-panel,
 .anatomy-display {
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  padding: 1.25rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+  padding: 1rem;
 }
 
 .control-panel h2,
 .anatomy-display h2 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
   color: #334155;
 }
 
@@ -417,14 +417,14 @@ const selectRightLegend = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .control-row input {
-  width: 3rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 1.8rem;
   padding: 0;
   border: none;
   background: transparent;
@@ -434,62 +434,62 @@ const selectRightLegend = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #475569;
 }
 
 .muscle-selection {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .muscle-selection h3 {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .muscle-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .muscle-grid label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.75rem;
+  gap: 0.45rem;
+  padding: 0.45rem;
+  border-radius: 0.65rem;
   background: #f8fafc;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .test-mode-panel {
   border: 1px solid rgba(148, 163, 184, 0.3);
   border-radius: 0.75rem;
-  padding: 1rem;
+  padding: 0.85rem;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .test-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .test-buttons button {
   flex: 1 1 30%;
-  min-width: 120px;
-  padding: 0.6rem 0.8rem;
-  border-radius: 0.75rem;
+  min-width: 110px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.65rem;
   border: none;
   background: #2563eb;
   color: white;
-  font-size: 0.9rem;
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
+  font-size: 0.85rem;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
 }
 
 .legend-section {
@@ -500,13 +500,13 @@ const selectRightLegend = () => {
 
 .legend-list {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .legend-list > div {
   background: white;
-  border-radius: 0.75rem;
-  padding: 0.75rem;
+  border-radius: 0.65rem;
+  padding: 0.65rem;
   border: 1px solid rgba(148, 163, 184, 0.2);
   box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
   display: flex;
@@ -517,34 +517,34 @@ const selectRightLegend = () => {
 .coord-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+  gap: 0.45rem;
+  font-size: 0.8rem;
 }
 
 .coord-group input {
-  width: 60px;
-  padding: 0.4rem;
-  border-radius: 0.5rem;
+  width: 54px;
+  padding: 0.35rem;
+  border-radius: 0.45rem;
   border: 1px solid rgba(148, 163, 184, 0.6);
   background: #fff;
 }
 
 .quick-tests h3 {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .anatomy-display {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .muscle-container {
   background: #f8fafc;
-  border-radius: 0.75rem;
-  padding: 1rem;
+  border-radius: 0.7rem;
+  padding: 0.85rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -557,12 +557,12 @@ const selectRightLegend = () => {
 
 .status-display {
   background: #f8fafc;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  font-size: 0.9rem;
+  border-radius: 0.7rem;
+  padding: 0.85rem;
+  font-size: 0.85rem;
   color: #475569;
   display: grid;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 @media (min-width: 768px) {
@@ -578,7 +578,7 @@ const selectRightLegend = () => {
   }
 
   .control-panel {
-    flex: 0 0 340px;
+    flex: 0 0 300px;
     position: sticky;
     top: 1rem;
     max-height: calc(100vh - 2rem);

@@ -73,16 +73,16 @@ const next = () => {
 .muscle-movements {
   min-height: 100vh;
   background: linear-gradient(180deg, #fef3c7 0%, #ffffff 55%);
-  padding: 1.25rem 1rem 3rem;
+  padding: 1rem 0.85rem 2.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .page-header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .back-btn {
@@ -90,34 +90,34 @@ const next = () => {
   background: white;
   border: 1px solid rgba(250, 204, 21, 0.35);
   border-radius: 999px;
-  padding: 0.4rem 0.9rem;
+  padding: 0.38rem 0.8rem;
   color: #92400e;
-  font-size: 0.9rem;
-  box-shadow: 0 10px 24px rgba(217, 119, 6, 0.12);
+  font-size: 0.85rem;
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.1);
 }
 
 .title-wrap h1 {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: #7c2d12;
 }
 
 .title-wrap p {
   color: #b45309;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .movement-list {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .movement-card {
   background: white;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 16px 28px rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(250, 204, 21, 0.2);
+  box-shadow: 0 12px 24px rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.18);
 }
 
 .movement-card img {

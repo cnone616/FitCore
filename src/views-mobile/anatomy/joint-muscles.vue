@@ -73,16 +73,16 @@ const next = () => {
 .joint-muscles {
   min-height: 100vh;
   background: linear-gradient(180deg, #eef2ff 0%, #ffffff 60%);
-  padding: 1.25rem 1rem 3rem;
+  padding: 1rem 0.85rem 2.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .page-header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .back-btn {
@@ -90,34 +90,34 @@ const next = () => {
   background: white;
   border: 1px solid rgba(148, 163, 184, 0.4);
   border-radius: 999px;
-  padding: 0.4rem 0.9rem;
+  padding: 0.38rem 0.8rem;
   color: #1e293b;
-  font-size: 0.9rem;
-  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12);
+  font-size: 0.85rem;
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
 }
 
 .title-wrap h1 {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: #0f172a;
 }
 
 .title-wrap p {
   color: #475569;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .diagram-list {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .diagram-card {
   background: white;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 18px 32px rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 14px 28px rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 
 .diagram-card img {

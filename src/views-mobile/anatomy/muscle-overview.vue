@@ -1,59 +1,57 @@
 <template>
   <div class="muscle-overview-page">
-    <div class="container mx-auto px-4 py-8">
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-fg mb-4">
-          📖 健身解剖总结
-        </h1>
+    <div class="page-container">
+      <div class="title-block">
+        <h1>📖 健身解剖总结</h1>
       </div>
 
       <div class="layout-container">
         <div class="control-panel">
           <div class="panel-card">
-            <h3 class="text-xl font-semibold mb-4">控制面板</h3>
+            <h3 class="section-title">控制面板</h3>
 
-            <div class="mb-6">
-              <label class="block text-sm font-medium mb-2">性别</label>
-              <div class="flex gap-2">
+            <div class="section-field">
+              <label class="field-label">性别</label>
+              <div class="gender-switch">
                 <button
                   @click="gender = 'male'"
-                  :class="['px-4 py-2 rounded', gender === 'male' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700']"
+                  :class="['toggle', gender === 'male' ? 'toggle-active' : '']"
                 >
                   男性
                 </button>
                 <button
                   @click="gender = 'female'"
-                  :class="['px-4 py-2 rounded', gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700']"
+                  :class="['toggle', gender === 'female' ? 'toggle-active' : '']"
                 >
                   女性
                 </button>
               </div>
             </div>
 
-            <div class="mb-6">
-              <div class="flex items-center justify-between mb-3">
-                <label class="block text-sm font-medium">肌肉部位</label>
-                <div class="flex gap-2">
+            <div class="section-field">
+              <div class="field-toolbar">
+                <label class="field-label">肌肉部位</label>
+                <div class="toolbar-actions">
                   <button
                     @click="toggleSelectAll"
-                    class="text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                    class="toolbar-btn primary"
                   >
                     {{ isAllSelected ? '取消全选' : '全选' }}
                   </button>
                   <button
                     @click="clearAllSelections"
-                    class="text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    class="toolbar-btn danger"
                   >
                     取消选择
                   </button>
                 </div>
               </div>
               <div class="muscle-list-container">
-                <div class="space-y-2">
+                <div class="muscle-list">
                   <label
                     v-for="(muscle, id) in muscleData"
                     :key="id"
-                    class="flex items-start space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50"
+                    class="muscle-item"
                   >
                     <input
                       type="checkbox"
@@ -61,9 +59,9 @@
                       @change="toggleMuscle(id)"
                       class="rounded mt-0.5 flex-shrink-0"
                     />
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm font-medium text-gray-900">{{ muscle.name }}</div>
-                      <div class="text-xs text-gray-500 mt-1 leading-relaxed">{{ muscle.description }}</div>
+                    <div class="muscle-info">
+                      <div class="name">{{ muscle.name }}</div>
+                      <div class="desc">{{ muscle.description }}</div>
                     </div>
                   </label>
                 </div>
@@ -74,7 +72,7 @@
 
         <div class="muscle-diagram-container">
           <div class="figure-container">
-            <h3 class="figure-title text-2xl font-semibold text-fg mb-4">人体肌肉解剖图</h3>
+            <h3 class="figure-title">人体肌肉解剖图</h3>
             <div class="figure-wrapper" ref="svgContainer">
               <HumanMuscleAnatomy
                 :gender="gender"
@@ -144,14 +142,31 @@ const clearAllSelections = () => {
 <style scoped>
 .muscle-overview-page {
   min-height: 100vh;
-  background: #f8f9fa;
-  padding: 2rem 0;
+  background: #f4f6f8;
+  padding: 1.4rem 0;
+}
+
+.page-container {
+  padding: 0 0.85rem 2rem;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.title-block {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.title-block h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-text, #1f2937);
 }
 
 .layout-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .control-panel {
@@ -161,43 +176,148 @@ const clearAllSelections = () => {
 .panel-card {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 0.9rem;
+  padding: 1.1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.1rem;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text, #1f2937);
+  margin: 0;
+}
+
+.section-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.gender-switch {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggle {
+  flex: 1;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #f1f5f9;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.toggle-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.field-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.toolbar-btn {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.55rem;
+  color: #ffffff;
+  border: none;
+}
+
+.toolbar-btn.primary {
+  background: #2563eb;
+}
+
+.toolbar-btn.danger {
+  background: #f43f5e;
 }
 
 .muscle-list-container {
+  max-height: 260px;
   overflow-y: auto;
-  max-height: 320px;
-  padding-right: 4px;
+  padding-right: 3px;
+}
+
+.muscle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.muscle-item {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  padding: 0.45rem;
+  border-radius: 0.6rem;
+  background: #f8fafc;
+}
+
+.muscle-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.muscle-info .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.muscle-info .desc {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  line-height: 1.45;
 }
 
 .muscle-diagram-container {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 2rem;
 }
 
 .figure-container {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 0.9rem;
+  padding: 1.1rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
   width: 100%;
+}
+
+.figure-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text, #1f2937);
+  margin-bottom: 0.75rem;
 }
 
 .figure-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 420px;
+  min-height: 360px;
   background: var(--color-background, #ffffff);
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -211,14 +331,13 @@ const clearAllSelections = () => {
   }
 
   .control-panel {
-    max-width: 320px;
+    max-width: 300px;
     position: sticky;
     top: 1rem;
   }
 
   .muscle-diagram-container {
     flex: 1;
-    margin-bottom: 0;
   }
 }
 </style>
