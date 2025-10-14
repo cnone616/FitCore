@@ -30,7 +30,7 @@ export const neckExercises: Exercise[] = []
 // 导出颈部数据
 export const neckExerciseData = {
   neck: {
-    muscleData: neck Data,
+    muscleData: neckData,
     exercises: neckExercises
   }
 }

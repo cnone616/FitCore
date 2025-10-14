@@ -1,5 +1,7 @@
+export type ThemeName = 'light' | 'dark' | 'blue' | 'green' | 'purple';
+
 export interface ThemeConfig {
-  name: string;
+  name: ThemeName;
   displayName: string;
   colors: {
     primary: string;
@@ -15,5 +17,3 @@ export interface ThemeConfig {
   };
   cssVars: Record<string, string>;
 }
-
-export type ThemeName = 'light' | 'dark' | 'blue' | 'green' | 'purple';

@@ -58,11 +58,7 @@ const themes: Record<ThemeName, ThemeConfig> = {
       '--primary-800': '#dbeafe',
       '--primary-900': '#eff6ff',
     }
-  }
-};
-
-// 扩展彩色主题
-Object.assign(themes, {
+  },
   blue: {
     name: 'blue',
     displayName: '蓝色主题',
@@ -147,7 +143,7 @@ Object.assign(themes, {
       '--primary-900': '#581c87',
     }
   }
-} satisfies Partial<Record<ThemeName, ThemeConfig>>);
+};
 
 // 当前主题状态
 const currentTheme = ref<ThemeName>('light');

@@ -7,9 +7,8 @@
     <div v-else class="desktop-app">
       <AppHeader ref="appHeader" />
       <AppBreadcrumb v-if="$route.path !== '/'" />
-      <main class="app-main" :class="{ 'with-nav': $route.path !== '/' }">
+      <main class="app-main">
         <router-view />
-        <FloatingNav />
       </main>
     </div>
   </div>
@@ -20,7 +19,6 @@ import { onMounted } from 'vue';
 import AppHeader from '@/components/AppHeader.vue';
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue';
 import { useTheme } from '@/utils/theme';
-import FloatingNav from '@/components/FloatingNav.vue';
 import MobileLayout from '@/components/layout/MobileLayout.vue';
 import { useDevice } from '@/utils/device';
 
@@ -57,11 +55,6 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-}
-
-.app-main.with-nav {
-  min-height: calc(100vh - 80px);
-  padding-top: 55px;
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,4 @@
-import { Exercise, EquipmentCategory, MuscleExercisesByEquipment } from '@/types/fitness-data'
+import { Exercise, MuscleExercisesByEquipment } from '@/types/fitness-data'
 
 // 🫴 三头肌 - 自重动作
 const tricepsBodyweightExercises: Exercise[] = [

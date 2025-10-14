@@ -54,7 +54,6 @@ const route = useRoute();
 const router = useRouter();
 
 // 从URL参数获取动作信息
-const exerciseId = computed(() => route.params.id as string);
 const exerciseName = computed(() => route.query.name as string || '未知动作');
 const jointMovements = computed(() => {
   try {

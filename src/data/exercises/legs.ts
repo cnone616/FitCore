@@ -1,4 +1,4 @@
-import { Exercise, EquipmentCategory, MuscleExercisesByEquipment } from '@/types/fitness-data'
+import { Exercise, MuscleExercisesByEquipment } from '@/types/fitness-data'
 
 // 🦵 腿部 - 自重动作
 const legsBodyweightExercises: Exercise[] = [
@@ -45,7 +45,7 @@ const legsBarbellExercises: Exercise[] = [
     name: 'Romanian Deadlift',
     chineseName: '罗马尼亚/传统硬拉',
     primaryMuscles: ['hamstrings'],
-    secondaryMuscles: ['glutes', 'lowerBack'],
+    secondaryMuscles: ['glutes', 'lower-back'],
     equipment: ['barbell'],
     difficulty: 'intermediate',
     description: '罗马尼亚硬拉，重点腘绳肌',
@@ -100,7 +100,7 @@ const legsDumbbellExercises: Exercise[] = [
     name: 'Dumbbell Deadlift',
     chineseName: '哑铃硬拉',
     primaryMuscles: ['hamstrings'],
-    secondaryMuscles: ['glutes', 'lowerBack'],
+    secondaryMuscles: ['glutes', 'lower-back'],
     equipment: ['dumbbell'],
     difficulty: 'intermediate',
     description: '哑铃硬拉，重点腘绳肌和臀大肌',
@@ -214,7 +214,7 @@ const legsOtherExercises: Exercise[] = [
     name: 'Resistance Band Deadlift',
     chineseName: '弹力带硬拉',
     primaryMuscles: ['hamstrings'],
-    secondaryMuscles: ['glutes', 'lowerBack'],
+    secondaryMuscles: ['glutes', 'lower-back'],
     equipment: ['resistance-band'],
     difficulty: 'beginner',
     description: '弹力带硬拉，重点腘绳肌',

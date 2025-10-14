@@ -8,11 +8,11 @@
         </h1>
       </div>
       
-      <!-- 左右布局 -->
-      <div class="flex gap-6">
-        <!-- 左侧控制面板 -->
-        <div class="control-panel w-80">
-          <div class="bg-white rounded-lg p-6 shadow-lg">
+      <!-- 交互布局 -->
+      <div class="layout-container">
+        <!-- 控制面板 -->
+        <div class="control-panel">
+          <div class="panel-card">
             <h3 class="text-xl font-semibold mb-4">控制面板</h3>
             
             <!-- 性别切换 -->
@@ -77,8 +77,8 @@
           </div>
         </div>
         
-        <!-- 右侧肌肉解剖图 -->
-        <div class="muscle-diagram-container flex-1">
+        <!-- 肌肉解剖图 -->
+        <div class="muscle-diagram-container">
           <div class="figure-container">
             <h3 class="figure-title text-2xl font-semibold text-fg mb-4">人体肌肉解剖图</h3>
             <div class="figure-wrapper" ref="svgContainer">
@@ -300,25 +300,33 @@ const clearAllSelections = () => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* 控制面板 */
-.control-panel {
-  flex-shrink: 0;
-  height: calc(100vh - 8rem); /* 计算高度，减去页面padding */
+/* 布局适配 */
+.layout-container {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
 
-.control-panel .bg-white {
-  height: 100%;
+/* 控制面板 */
+.control-panel {
+  width: 100%;
+}
+
+.panel-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
 
 /* 肌肉列表容器 */
 .muscle-list-container {
-  flex: 1;
   overflow-y: auto;
-  max-height: calc(100vh - 24rem); /* 增加高度限制 */
+  max-height: 320px;
   padding-right: 4px; /* 为滚动条留出空间 */
 }
 
@@ -355,15 +363,16 @@ const clearAllSelections = () => {
 .muscle-diagram-container {
   display: flex;
   justify-content: center;
+  width: 100%;
   margin-bottom: 2rem;
 }
 
 .figure-container {
-  background: white;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   width: 100%;
 }
 
@@ -371,13 +380,35 @@ const clearAllSelections = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 500px;
-  background: #ffffff;
+  min-height: 420px;
+  background: var(--color-background, #ffffff);
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   border: 1px solid #e5e7eb;
+}
+
+@media (min-width: 1024px) {
+  .layout-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .control-panel {
+    max-width: 320px;
+    position: sticky;
+    top: 1rem;
+  }
+
+  .muscle-diagram-container {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .panel-card {
+    padding: 1.75rem;
+  }
 }
 
 

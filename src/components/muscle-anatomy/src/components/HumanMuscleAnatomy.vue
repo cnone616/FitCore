@@ -714,29 +714,6 @@ const muscleCenters: Record<MuscleGroup, { x: number; y: number }> = {
   'neck': { x: 512, y: 120 }
 };
 
-// 肌肉中文名称映射
-const muscleNames: Record<MuscleGroup, string> = {
-  'chest': '胸大肌',
-  'lats': '背阔肌',
-  'traps': '斜方肌',
-  'rotatorCuffs': '旋转肌袖',
-  'lowerBack': '竖脊肌',
-  'frontDelts': '三角肌前束',
-  'sideDelts': '三角肌中束',
-  'rearDelts': '三角肌后束',
-  'triceps': '肱三头肌',
-  'biceps': '肱二头肌',
-  'forearms': '前臂肌群',
-  'abs': '腹直肌',
-  'obliques': '腹斜肌',
-  'glutes': '臀大肌',
-  'quads': '股四头肌',
-  'hamstrings': '腘绳肌',
-  'adductors': '大腿内收肌',
-  'abductors': '大腿外展肌',
-  'calves': '小腿肌群',
-  'neck': '颈部肌群'
-};
 
 function getStyle(muscleGroup?: MuscleGroup) {
   if (!muscleGroup) {
@@ -953,34 +930,6 @@ const getMuscleLegendPosition = (muscle: MuscleGroup, context?: 'left' | 'right'
   return muscleLegendPositions[muscle] || { x: 200, y: 200 };
 };
 
-// 获取肌肉文本位置
-const getMuscleTextPosition = (muscle: MuscleGroup, context?: 'left' | 'right'): { x: number; y: number; textSide: string } => {
-  // 如果没有提供上下文，自动判断
-  if (!context) {
-    const autoContext = getMuscleLegendContext(muscle);
-    context = autoContext || undefined;
-  }
-  
-  // 如果有上下文参数，优先使用对应侧的数据
-  if (context === 'left') {
-    const leftData = leftLegendData.find(item => item.muscle === muscle);
-    if (leftData) return { ...leftData.legend, textSide: leftData.textSide || 'right' };
-  } else if (context === 'right') {
-    const rightData = rightLegendData.find(item => item.muscle === muscle);
-    if (rightData) return { ...rightData.legend, textSide: rightData.textSide || 'left' };
-  }
-  
-  // 如果没有上下文或找不到对应数据，按原逻辑查找
-  const leftData = leftLegendData.find(item => item.muscle === muscle);
-  const rightData = rightLegendData.find(item => item.muscle === muscle);
-  
-  if (leftData) return { ...leftData.legend, textSide: leftData.textSide || 'right' };
-  if (rightData) return { ...rightData.legend, textSide: rightData.textSide || 'left' };
-  
-  // 回退到默认数据
-  const defaultPos = muscleLegendPositions[muscle] || { x: 200, y: 200 };
-  return { ...defaultPos, textSide: 'right' };
-};
 </script>
 
 <style scoped>

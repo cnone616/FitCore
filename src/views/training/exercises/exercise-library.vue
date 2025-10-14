@@ -124,7 +124,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { chestExerciseData } from '@/data/exercises/chest';
+import type { EquipmentCategory } from '@/types/fitness-data';
+import { chestExerciseData, chestExerciseDataDetailed } from '@/data/exercises/chest';
 import { backExerciseData } from '@/data/exercises/back';
 import { shouldersExerciseData } from '@/data/exercises/shoulders';
 import { bicepsExerciseData } from '@/data/exercises/biceps';
@@ -255,88 +256,38 @@ const equipmentTypes = ref([
 
 const selectedEquipment = ref('barbell');
 
-// 当前显示的动作数据
-const currentExercises = computed(() => {
-  // 根据选中的分类动态加载对应的动作数据
-  if (selectedCategory.value === 'chest') {
-    return chestExerciseData.equipmentCategories;
+const chestSubcategoryMap = chestExerciseDataDetailed.reduce<Record<string, EquipmentCategory[]>>((acc, item) => {
+  if (item.muscleRegion) {
+    acc[item.muscleRegion] = item.equipmentCategories;
   }
-  
-  // 背部数据
-  if (selectedCategory.value === 'back') {
-    return backExerciseData.equipmentCategories;
-  }
+  return acc;
+}, {});
 
-  // 肩部数据
-  if (selectedCategory.value === 'shoulders') {
-    return shouldersExerciseData.equipmentCategories;
+const categoryExerciseData: Record<string, { default: EquipmentCategory[]; subcategories?: Record<string, EquipmentCategory[]> }> = {
+  chest: {
+    default: chestExerciseData.equipmentCategories,
+    subcategories: chestSubcategoryMap
+  },
+  back: {
+    default: backExerciseData.equipmentCategories
+  },
+  shoulders: {
+    default: shouldersExerciseData.equipmentCategories
+  },
+  biceps: {
+    default: bicepsExerciseData.equipmentCategories
+  },
+  triceps: {
+    default: tricepsExerciseData.equipmentCategories
+  },
+  legs: {
+    default: legsExerciseData.equipmentCategories
+  },
+  abs: {
+    default: absExerciseData.equipmentCategories
   }
+};
 
-  // 二头肌数据
-  if (selectedCategory.value === 'biceps') {
-    return bicepsExerciseData.equipmentCategories;
-  }
-
-  // 三头肌数据
-  if (selectedCategory.value === 'triceps') {
-    return tricepsExerciseData.equipmentCategories;
-  }
-
-  // 腿部数据
-  if (selectedCategory.value === 'legs') {
-    return legsExerciseData.equipmentCategories;
-  }
-
-  // 腹部数据
-  if (selectedCategory.value === 'abs') {
-    return absExerciseData.equipmentCategories;
-  }
-
-  if (selectedCategory.value === 'shoulders') {
-    return [
-      {
-        category: 'placeholder',
-        chineseName: '肩部动作',
-        exercises: [
-          {
-            id: 'shoulders-placeholder',
-            name: 'Shoulders Placeholder',
-            chineseName: '肩部动作数据开发中',
-            primaryMuscles: ['sideDelts'],
-            equipment: ['placeholder'],
-            difficulty: 'intermediate',
-            description: '肩部动作数据暂未添加',
-            instructions: ['数据开发中'],
-            count: '0'
-          }
-        ]
-      }
-    ];
-  }
-  
-  // 其他分类的占位数据
-  return [
-    {
-      category: 'placeholder',
-      chineseName: `${getCategoryName(selectedCategory.value)}动作`,
-      exercises: [
-        {
-          id: `${selectedCategory.value}-placeholder`,
-          name: `${selectedCategory.value} Placeholder`,
-          chineseName: `${getCategoryName(selectedCategory.value)}动作数据开发中`,
-          primaryMuscles: [selectedCategory.value],
-          equipment: ['placeholder'],
-          difficulty: 'intermediate',
-          description: `${getCategoryName(selectedCategory.value)}动作数据暂未添加`,
-          instructions: ['数据开发中'],
-          count: '0'
-        }
-      ]
-    }
-  ];
-});
-
-// 获取分类中文名称的辅助函数
 const getCategoryName = (categoryId: string): string => {
   const categoryMap: Record<string, string> = {
     'chest': '胸部',
@@ -357,6 +308,46 @@ const getCategoryName = (categoryId: string): string => {
   };
   return categoryMap[categoryId] || categoryId;
 };
+
+const buildPlaceholder = (categoryId: string): EquipmentCategory[] => [
+  {
+    category: 'placeholder',
+    chineseName: `${getCategoryName(categoryId)}动作`,
+    exercises: [
+      {
+        id: `${categoryId}-placeholder`,
+        name: `${categoryId} Placeholder`,
+        chineseName: `${getCategoryName(categoryId)}动作数据开发中`,
+        primaryMuscles: [],
+        equipment: ['none'],
+        difficulty: 'intermediate',
+        description: `${getCategoryName(categoryId)}动作数据暂未添加`,
+        instructions: ['数据开发中'],
+        count: '0'
+      }
+    ]
+  }
+];
+
+// 当前显示的动作数据
+const currentExercises = computed(() => {
+  const categoryId = selectedCategory.value;
+  const config = categoryExerciseData[categoryId];
+
+  if (config) {
+    const subcategoryId = selectedSubcategory.value;
+    const subcategoryData = config.subcategories?.[subcategoryId];
+    if (subcategoryData && subcategoryData.length > 0) {
+      return subcategoryData;
+    }
+
+    if (config.default.length > 0) {
+      return config.default;
+    }
+  }
+
+  return buildPlaceholder(categoryId);
+});
 
 // 方法
 const selectCategory = (categoryId: string) => {
@@ -379,10 +370,6 @@ const selectCategory = (categoryId: string) => {
 
 const selectSubcategory = (subcategoryId: string) => {
   selectedSubcategory.value = subcategoryId;
-};
-
-const selectEquipment = (equipmentId: string) => {
-  selectedEquipment.value = equipmentId;
 };
 
 // 滚动到指定器械分类（锚点效果）

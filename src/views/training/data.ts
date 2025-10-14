@@ -71,6 +71,7 @@ export const workoutPlans: WorkoutPlan[] = [
         id: '3',
         name: '平板支撑',
         sets: 3,
+        reps: 0,
         duration: 30,
         rest: 60,
         instructions: ['保持身体成一条直线', '收紧核心', '正常呼吸']
@@ -97,6 +98,7 @@ export const workoutPlans: WorkoutPlan[] = [
         id: '5',
         name: '高抬腿',
         sets: 4,
+        reps: 0,
         duration: 30,
         rest: 30,
         instructions: ['快速抬腿', '保持核心稳定', '手臂自然摆动']

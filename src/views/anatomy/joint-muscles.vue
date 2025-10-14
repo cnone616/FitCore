@@ -57,6 +57,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import jointMuscleImages from '@/data/anatomy/jointMuscles';
 
 const router = useRouter();
 
@@ -65,47 +66,7 @@ const showImageViewer = ref(false);
 const currentImageIndex = ref(0);
 
 // 肌肉图解数据 - 使用重命名后的友好文件名
-const muscleDiagrams = ref([
-  {
-    image: '/src/assets/anatomy/joint-muscles/knee-joint-muscles-1.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/shoulder-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/elbow-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/wrist-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/hip-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/ankle-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/ankle-joint-muscles-2.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/spine-joint-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/chest-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/back-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/abdomen-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/arm-muscles.png',
-  },
-  {
-    image: '/src/assets/anatomy/joint-muscles/leg-muscles.png',
-  }
-]);
+const muscleDiagrams = ref(jointMuscleImages.map(image => ({ image })));
 
 // 打开图片查看器
 const openImageViewer = (index: number) => {

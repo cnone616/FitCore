@@ -7,8 +7,16 @@
 export type MuscleRegion = 
   // 🧸 胸部 
   | 'chest'                 // 胸部 - 对应HumanMuscleAnatomy组件的chest
+  | 'back'                  // 背部整体
+  | 'shoulders'             // 肩部整体
+  | 'legs'                  // 腿部整体
   | 'upper-chest'           // 上胸 - 胸大肌锁骨部(细分)
   | 'middle-lower-chest'    // 中下胸 - 胸大肌胸骨部和肋骨部(细分)
+  | 'abs'                   // 腹部笼统分类
+  | 'glutes'                // 臀部整体
+  | 'quads'                 // 股四头肌通用写法
+  | 'lats'                  // 背阔肌通用写法
+  | 'obliques'              // 腹外斜肌
   
   // 🫁 背部细分 (2种) 
   | 'upper-back'            // 上背 - 斜方肌上部、菱形肌、三角肌后束
@@ -85,6 +93,10 @@ export type Equipment =
   | 'machine'
   | 'yoga-mat'
   | 'bench'
+  | 'pull-up-bar'
+  | 'ab-wheel'
+  | 'preacher-bench'
+  | 't-bar'
   | 'none'
 
 // 关节动作类型

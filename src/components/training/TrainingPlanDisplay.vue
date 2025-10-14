@@ -145,7 +145,7 @@ interface Props {
   plans: TrainingPlan[];
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 const router = useRouter();
 
 // 跳转到动作详情页面

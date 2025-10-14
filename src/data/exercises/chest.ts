@@ -704,11 +704,11 @@ export const chestExerciseData: MuscleExercisesByEquipment = {
 // 📊 按部位分开的数据
 export const chestExerciseDataDetailed: MuscleExercisesByEquipment[] = [
   {
-    muscleRegion: 'chest',
+    muscleRegion: 'upper-chest',
     equipmentCategories: upperChestEquipmentCategories
   },
   {
-    muscleRegion: 'chest', 
+    muscleRegion: 'middle-lower-chest', 
     equipmentCategories: middleLowerChestEquipmentCategories
   }
 ]

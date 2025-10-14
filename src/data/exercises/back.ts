@@ -1,4 +1,4 @@
-import { Exercise, EquipmentCategory, MuscleExercisesByEquipment } from '@/types/fitness-data'
+import { Exercise, MuscleExercisesByEquipment } from '@/types/fitness-data'
 
 // 🫴 背部 - 自重动作
 const backBodyweightExercises: Exercise[] = [
@@ -63,7 +63,7 @@ const backBarbellExercises: Exercise[] = [
     name: 'Barbell Row',
     chineseName: '杠铃俯身划船',
     primaryMuscles: ['lats'],
-    secondaryMuscles: ['rearDelts', 'biceps', 'lowerBack'],
+    secondaryMuscles: ['rearDelts', 'biceps', 'lower-back'],
     equipment: ['barbell'],
     difficulty: 'intermediate',
     description: '宽握肩水平外展，训练背阔肌和中背部',
@@ -201,7 +201,7 @@ const backOtherExercises: Exercise[] = [
     name: 'T-Bar Row',
     chineseName: 'T杆俯身划船',
     primaryMuscles: ['lats'],
-    secondaryMuscles: ['rearDelts', 'biceps', 'lowerBack'],
+    secondaryMuscles: ['rearDelts', 'biceps', 'lower-back'],
     equipment: ['t-bar'],
     difficulty: 'intermediate',
     description: '中握肩伸混合肩水平外展',

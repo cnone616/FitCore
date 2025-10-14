@@ -189,7 +189,7 @@ const routes = [
   {
     path: '/anatomy',
     name: 'Anatomy',
-    component: () => import('@/views/anatomy/index.vue'),
+    component: () => import('@/components/detail-wrappers/AnatomyIndexWrapper.vue'),
     meta: {
       title: '解剖学习'
     }
@@ -197,7 +197,7 @@ const routes = [
   {
     path: '/anatomy/joint-muscles',
     name: 'JointMuscles',
-    component: () => import('@/views/anatomy/joint-muscles.vue'),
+    component: () => import('@/components/detail-wrappers/JointMusclesWrapper.vue'),
     meta: {
       title: '关节活动的肌肉'
     }
@@ -205,7 +205,7 @@ const routes = [
   {
     path: '/anatomy/muscle-movements',
     name: 'MuscleMovements',
-    component: () => import('@/views/anatomy/muscle-movements.vue'),
+    component: () => import('@/components/detail-wrappers/MuscleMovementsWrapper.vue'),
     meta: {
       title: '肌肉的关节活动'
     }
@@ -213,7 +213,7 @@ const routes = [
   {
     path: '/anatomy/muscle-overview',
     name: 'MuscleOverview',
-    component: () => import('@/views/anatomy/muscle-overview.vue'),
+    component: () => import('@/components/detail-wrappers/MuscleOverviewWrapper.vue'),
     meta: {
       title: '健身解剖总结'
     }
@@ -261,7 +261,7 @@ const routes = [
   {
     path: '/debug/muscle-anatomy',
     name: 'MuscleAnatomyDebug',
-    component: () => import('@/views/debug/muscle-anatomy-debug.vue'),
+    component: () => import('@/components/detail-wrappers/MuscleAnatomyDebugWrapper.vue'),
     meta: {
       title: '肌肉组件调试'
     }
@@ -271,7 +271,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     }
@@ -283,7 +283,7 @@ const router = createRouter({
 });
 
 // 路由守卫 - 设置页面标题
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   if (to.meta.title) {
     document.title = `${to.meta.title} - FitCore`;
   }

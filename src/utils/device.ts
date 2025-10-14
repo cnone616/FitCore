@@ -9,42 +9,6 @@ const isDesktop = ref(true); // 默认桌面端
 const windowWidth = ref(1024); // 默认桌面端宽度
 const windowHeight = ref(768); // 默认桌面端高度
 
-// 检测设备类型（基于User Agent）
-function detectDeviceType() {
-  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
-    return { isMobile: false, isTablet: false, isDesktop: true };
-  }
-
-  const userAgent = navigator.userAgent.toLowerCase();
-  
-  // 移动设备检测 - 更精确的检测
-  const mobileRegex = /android.*mobile|webos|iphone|ipod|blackberry|iemobile|opera mini|mobile safari|mobile firefox|mobile chrome/i;
-  const isMobileDevice = mobileRegex.test(userAgent);
-  
-  // 平板设备检测
-  const tabletRegex = /ipad|android(?!.*mobile)|kindle|silk|playbook|bb10/i;
-  const isTabletDevice = tabletRegex.test(userAgent);
-  
-  // 桌面设备检测
-  const isDesktopDevice = !isMobileDevice && !isTabletDevice;
-  
-  // 调试信息
-  console.log('设备检测调试信息:', {
-    userAgent: navigator.userAgent,
-    isMobileDevice,
-    isTabletDevice,
-    isDesktopDevice,
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight
-  });
-  
-  return {
-    isMobile: isMobileDevice,
-    isTablet: isTabletDevice,
-    isDesktop: isDesktopDevice
-  };
-}
-
 // 更新设备检测 - 简化版，只根据窗口宽度判断
 function updateDeviceDetection() {
   if (typeof window === 'undefined') return;

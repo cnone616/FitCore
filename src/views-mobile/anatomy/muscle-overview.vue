@@ -1,31 +1,27 @@
 <template>
   <div class="muscle-overview-page">
     <div class="container mx-auto px-4 py-8">
-      <!-- 页面头部 -->
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-fg mb-4">
           📖 健身解剖总结
         </h1>
       </div>
-      
-      <!-- 自适应布局 -->
+
       <div class="layout-container">
-        <!-- 控制面板 -->
         <div class="control-panel">
           <div class="panel-card">
             <h3 class="text-xl font-semibold mb-4">控制面板</h3>
-            
-            <!-- 性别切换 -->
+
             <div class="mb-6">
               <label class="block text-sm font-medium mb-2">性别</label>
               <div class="flex gap-2">
-                <button 
+                <button
                   @click="gender = 'male'"
                   :class="['px-4 py-2 rounded', gender === 'male' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700']"
                 >
                   男性
                 </button>
-                <button 
+                <button
                   @click="gender = 'female'"
                   :class="['px-4 py-2 rounded', gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700']"
                 >
@@ -33,19 +29,18 @@
                 </button>
               </div>
             </div>
-            
-            <!-- 肌肉部位勾选 -->
+
             <div class="mb-6">
               <div class="flex items-center justify-between mb-3">
                 <label class="block text-sm font-medium">肌肉部位</label>
                 <div class="flex gap-2">
-                  <button 
+                  <button
                     @click="toggleSelectAll"
                     class="text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
                   >
                     {{ isAllSelected ? '取消全选' : '全选' }}
                   </button>
-                  <button 
+                  <button
                     @click="clearAllSelections"
                     class="text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
                   >
@@ -55,13 +50,13 @@
               </div>
               <div class="muscle-list-container">
                 <div class="space-y-2">
-                  <label 
-                    v-for="(muscle, id) in muscleData" 
+                  <label
+                    v-for="(muscle, id) in muscleData"
                     :key="id"
                     class="flex items-start space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50"
                   >
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       :checked="isMuscleSelected(id)"
                       @change="toggleMuscle(id)"
                       class="rounded mt-0.5 flex-shrink-0"
@@ -76,8 +71,7 @@
             </div>
           </div>
         </div>
-        
-        <!-- 肌肉解剖图 -->
+
         <div class="muscle-diagram-container">
           <div class="figure-container">
             <h3 class="figure-title text-2xl font-semibold text-fg mb-4">人体肌肉解剖图</h3>
@@ -109,53 +103,38 @@ import { ref, computed } from 'vue';
 import { HumanMuscleAnatomy } from '@/components/muscle-anatomy/src';
 import muscleData from '@/data/anatomy/muscleOverview';
 
-// 性别状态
 const gender = ref<'male' | 'female'>('male');
-
-// 肌肉高亮状态
 const selectedPrimaryMuscleGroups = ref<string[]>([]);
 const selectedSecondaryMuscleGroups = ref<string[]>([]);
 
-
-// 计算属性 - 检查是否全选
 const isAllSelected = computed(() => {
   const allMuscleIds = Object.keys(muscleData);
   return allMuscleIds.every(id => isMuscleSelected(id));
 });
 
-// 检查肌肉是否被选中
-const isMuscleSelected = (muscleId: string) => {
-  return selectedPrimaryMuscleGroups.value.includes(muscleId) || 
-         selectedSecondaryMuscleGroups.value.includes(muscleId);
-};
+const isMuscleSelected = (id: string) =>
+  selectedPrimaryMuscleGroups.value.includes(id) || selectedSecondaryMuscleGroups.value.includes(id);
 
-// 切换肌肉选中状态
-const toggleMuscle = (muscleId: string) => {
-  if (isMuscleSelected(muscleId)) {
-    // 如果已选中，则移除
-    selectedPrimaryMuscleGroups.value = selectedPrimaryMuscleGroups.value.filter(id => id !== muscleId);
-    selectedSecondaryMuscleGroups.value = selectedSecondaryMuscleGroups.value.filter(id => id !== muscleId);
+const toggleMuscle = (id: string) => {
+  if (isMuscleSelected(id)) {
+    selectedPrimaryMuscleGroups.value = selectedPrimaryMuscleGroups.value.filter(item => item !== id);
+    selectedSecondaryMuscleGroups.value = selectedSecondaryMuscleGroups.value.filter(item => item !== id);
   } else {
-    // 如果未选中，则添加到主要肌肉组
-    selectedPrimaryMuscleGroups.value.push(muscleId);
+    selectedPrimaryMuscleGroups.value.push(id);
   }
 };
 
-// 全选/取消全选
 const toggleSelectAll = () => {
   const allMuscleIds = Object.keys(muscleData);
   if (isAllSelected.value) {
-    // 取消全选
     selectedPrimaryMuscleGroups.value = [];
     selectedSecondaryMuscleGroups.value = [];
   } else {
-    // 全选
     selectedPrimaryMuscleGroups.value = [...allMuscleIds];
     selectedSecondaryMuscleGroups.value = [];
   }
 };
 
-// 取消选择（清空所有选择）
 const clearAllSelections = () => {
   selectedPrimaryMuscleGroups.value = [];
   selectedSecondaryMuscleGroups.value = [];
@@ -163,35 +142,12 @@ const clearAllSelections = () => {
 </script>
 
 <style scoped>
-/* 页面样式 */
 .muscle-overview-page {
   min-height: 100vh;
   background: #f8f9fa;
   padding: 2rem 0;
 }
 
-/* 返回按钮 */
-.back-button {
-  background: white;
-  border: 2px solid #e5e7eb;
-  color: #374151;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.back-button:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* 布局 */
 .layout-container {
   display: flex;
   flex-direction: column;
@@ -206,50 +162,19 @@ const clearAllSelections = () => {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 1rem;
-  padding: 1.75rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* 肌肉列表容器 */
 .muscle-list-container {
   overflow-y: auto;
   max-height: 320px;
   padding-right: 4px;
 }
 
-.muscle-list-container::-webkit-scrollbar {
-  width: 6px;
-}
-
-.muscle-list-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-.muscle-list-container::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
-}
-
-.muscle-list-container::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* 肌肉项目样式 */
-.muscle-list-container label {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.muscle-list-container .text-xs {
-  line-height: 1.4;
-  word-break: break-word;
-}
-
-/* 肌肉图容器 */
 .muscle-diagram-container {
   display: flex;
   justify-content: center;
@@ -261,8 +186,8 @@ const clearAllSelections = () => {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 1rem;
-  padding: 1.75rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   width: 100%;
 }
 
@@ -270,7 +195,7 @@ const clearAllSelections = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 460px;
+  min-height: 420px;
   background: var(--color-background, #ffffff);
   border-radius: 1rem;
   overflow: hidden;
@@ -295,88 +220,5 @@ const clearAllSelections = () => {
     flex: 1;
     margin-bottom: 0;
   }
-}
-
-
-/* 为SVG内的肌肉路径添加点击事件支持 */
-.figure-wrapper :deep(.vue-human-muscle-anatomy svg path) {
-  cursor: pointer;
-  transition: fill 0.3s ease;
-}
-
-.figure-wrapper :deep(.vue-human-muscle-anatomy svg path:hover) {
-  fill: #16a085 !important;
-  stroke: #138d75 !important;
-  stroke-width: 2px !important;
-  filter: brightness(1.2);
-}
-
-/* 肌肉高亮样式 */
-:deep(.muscle-area) {
-  fill: #828d99 !important; /* 默认颜色 */
-  stroke: #6b7280;
-  stroke-width: 1px;
-  transition: fill 0.3s ease, stroke 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
-
-:deep(.muscle-area:hover) {
-  fill: #51d5ce !important; /* 悬停颜色 - 青色 */
-  stroke: #0d9488 !important;
-  stroke-width: 2px !important;
-  transform: scale(1.05);
-  filter: brightness(1.2);
-}
-
-/* 选中状态的肌肉 */
-:deep(.muscle-area.selected),
-:deep(.muscle-area.is-selected) {
-  fill: #51d5ce !important; /* 选中颜色 - 青色 */
-  stroke: #0d9488 !important;
-  stroke-width: 2px !important;
-  transform: scale(1.05);
-  filter: brightness(1.2);
-}
-
-/* 悬停状态的肌肉 */
-:deep(.muscle-area.hovered),
-:deep(.muscle-area.is-hovered) {
-  fill: #51d5ce !important; /* 悬停颜色 - 青色 */
-  stroke: #0d9488 !important;
-  stroke-width: 2px !important;
-  transform: scale(1.05);
-  filter: brightness(1.2);
-}
-
-/* 未选中状态 - 保持默认颜色 */
-:deep(.muscle-area.unselected) {
-  fill: #828d99 !important;
-  opacity: 0.7;
-}
-
-/* 覆盖组件容器，强制单个视图 */
-.figure-wrapper :deep(.vue-human-muscle-anatomy) {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-/* 强制显示单个结合视图 */
-.figure-wrapper :deep(.vue-human-muscle-anatomy > *) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.figure-wrapper :deep(.vue-human-muscle-anatomy > *:not(:first-child)) {
-  display: none !important;
-}
-
-:deep(.vue-human-muscle-anatomy svg) {
-  display: block !important;
-  width: 100%;
-  height: auto;
 }
 </style>

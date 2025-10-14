@@ -57,6 +57,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import muscleMovementImages from '@/data/anatomy/muscleMovements';
 
 const router = useRouter();
 
@@ -65,29 +66,7 @@ const showImageViewer = ref(false);
 const currentImageIndex = ref(0);
 
 // 肌肉活动图解数据
-const muscleMovements = ref([
-  {
-    image: '/src/assets/anatomy/muscle-movements/elbow-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/ankle-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/knee-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/hip-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/wrist-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/shoulder-movement.png',
-  },
-  {
-    image: '/src/assets/anatomy/muscle-movements/spine-movement.png',
-  }
-]);
+const muscleMovements = ref(muscleMovementImages.map(image => ({ image })));
 
 // 打开图片查看器
 const openImageViewer = (index: number) => {

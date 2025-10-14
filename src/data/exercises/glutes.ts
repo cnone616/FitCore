@@ -1,4 +1,4 @@
-import { Exercise, EquipmentCategory, MuscleExercisesByEquipment } from '@/types/fitness-data'
+import { Exercise, MuscleExercisesByEquipment } from '@/types/fitness-data'
 
 // 🍑 臀部 - 杠铃动作
 const glutesBarbellExercises: Exercise[] = [
@@ -51,7 +51,7 @@ const glutesOtherExercises: Exercise[] = [
     name: 'Resistance Band Glute Bridge',
     chineseName: '弹力带臀桥',
     primaryMuscles: ['glutes'],
-    secondaryMuscles: ['hamstrings', 'lowerBack'],
+    secondaryMuscles: ['hamstrings', 'lower-back'],
     equipment: ['resistance-band'],
     difficulty: 'beginner',
     description: '弹力带臀桥，重点臀大肌',
@@ -68,7 +68,7 @@ const glutesOtherExercises: Exercise[] = [
     name: 'Resistance Band Hip Abduction',
     chineseName: '弹力带髋外展',
     primaryMuscles: ['glutes'],
-    secondaryMuscles: ['middle-glutes'],
+    secondaryMuscles: ['upper-glutes'],
     equipment: ['resistance-band'],
     difficulty: 'beginner',
     description: '弹力带髋外展，重点臀大肌',

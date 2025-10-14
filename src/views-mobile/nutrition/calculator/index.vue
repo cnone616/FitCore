@@ -93,38 +93,43 @@ interface NutritionResults {
   carbs: number;
 }
 
-const form = ref({
-  age: '',
+interface NutritionForm {
+  age: number | null;
+  gender: 'male' | 'female';
+  height: number | null;
+  weight: number | null;
+}
+
+const form = ref<NutritionForm>({
+  age: null,
   gender: 'male',
-  height: '',
-  weight: ''
+  height: null,
+  weight: null
 });
 
 const results = ref<NutritionResults | null>(null);
 
 function calculateNutrition() {
-  // 简单的营养计算逻辑
-  const age = parseInt(form.value.age);
-  const height = parseInt(form.value.height);
-  const weight = parseInt(form.value.weight);
-  
-  if (!age || !height || !weight) {
+  const age = form.value.age ?? 0;
+  const height = form.value.height ?? 0;
+  const weight = form.value.weight ?? 0;
+
+  if (age <= 0 || height <= 0 || weight <= 0) {
     alert('请填写完整信息');
     return;
   }
-  
-  // 基础代谢率计算 (简化版)
-  let bmr;
+
+  let bmr: number;
   if (form.value.gender === 'male') {
     bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
   } else {
     bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
   }
-  
-  const calories = Math.round(bmr * 1.2); // 轻度活动
-  const protein = Math.round(weight * 1.6); // 每公斤体重1.6g蛋白质
-  const carbs = Math.round(calories * 0.5 / 4); // 50%卡路里来自碳水
-  
+
+  const calories = Math.round(bmr * 1.2);
+  const protein = Math.round(weight * 1.6);
+  const carbs = Math.round((calories * 0.5) / 4);
+
   results.value = {
     calories,
     protein,
