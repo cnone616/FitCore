@@ -65,26 +65,26 @@ onMounted(() => {
 
 <style scoped>
 .mobile-home {
-  padding: 20px 16px;
+  padding: 16px 12px;
   background-color: var(--color-background);
   min-height: 100vh;
-  padding-bottom: 80px; /* 为底部导航留出空间 */
+  padding-bottom: 72px; /* 为底部导航留出空间 */
 }
 
 .mobile-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
 }
 
 .app-title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--color-text);
 }
 
 .app-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--color-text-secondary);
   margin: 0;
 }
@@ -92,18 +92,18 @@ onMounted(() => {
 .modules-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .module-card {
   background-color: var(--color-surface);
-  border-radius: 16px;
-  padding: 24px 16px;
+  border-radius: 14px;
+  padding: 18px 12px;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .module-card:hover {
@@ -137,47 +137,47 @@ onMounted(() => {
 }
 
 .module-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 28px;
+  margin-bottom: 6px;
 }
 
 .module-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .module-desc {
-  font-size: 11px;
+  font-size: 10px;
   opacity: 0.9;
   margin-top: 4px;
 }
 
 .quick-actions {
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: var(--color-text);
 }
 
 .actions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .action-item {
   display: flex;
   align-items: center;
   background-color: var(--color-surface);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 12px;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .action-item:hover {
@@ -186,12 +186,12 @@ onMounted(() => {
 }
 
 .action-icon {
-  font-size: 20px;
-  margin-right: 12px;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .action-name {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text);
   font-weight: 500;
 }
@@ -199,19 +199,19 @@ onMounted(() => {
 /* 适配不同屏幕尺寸 */
 @media (max-width: 360px) {
   .mobile-home {
-    padding: 16px 12px;
+    padding: 14px 10px;
   }
 
   .modules-grid {
-    gap: 12px;
+    gap: 10px;
   }
 
   .module-card {
-    padding: 20px 12px;
+    padding: 16px 10px;
   }
 
   .app-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 </style>

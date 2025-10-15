@@ -1,53 +1,53 @@
 <template>
   <div class="user-data-page">
-    <div class="container mx-auto px-4 py-8">
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-fg mb-4">📊 数据概览</h1>
-        <p class="text-lg text-fg-muted">查看你的健身和营养数据统计</p>
+    <div class="container mx-auto px-3 py-6">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-semibold text-fg mb-3">📊 数据概览</h1>
+        <p class="text-base text-fg-muted">查看你的健身和营养数据统计</p>
       </div>
 
       <!-- 加载状态 -->
-      <div v-if="userStore.loading" class="text-center py-8">
+      <div v-if="userStore.loading" class="text-center py-6">
         <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         <p class="mt-2 text-fg-muted">加载中...</p>
       </div>
 
       <!-- 未登录状态 -->
-      <div v-if="!userStore.isLoggedIn" class="text-center py-12">
-        <div class="text-6xl mb-4">📊</div>
-        <h2 class="text-2xl font-semibold text-fg mb-4">还没有数据</h2>
-        <p class="text-fg-muted mb-6">请先创建用户档案并添加数据</p>
-        <router-link to="/user/settings" class="bg-primary hover:bg-primary-dark text-on-primary px-6 py-3 rounded-lg transition-colors">
+      <div v-if="!userStore.isLoggedIn" class="text-center py-9">
+        <div class="text-5xl mb-3">📊</div>
+        <h2 class="text-xl font-semibold text-fg mb-3">还没有数据</h2>
+        <p class="text-fg-muted mb-5 text-sm">请先创建用户档案并添加数据</p>
+        <router-link to="/user/settings" class="bg-primary hover:bg-primary-dark text-on-primary px-4 py-2.5 rounded-lg transition-colors text-sm">
           去设置页面
         </router-link>
       </div>
 
       <!-- 数据概览 -->
-      <div v-else class="space-y-8">
+      <div v-else class="space-y-6">
         <!-- 今日营养摄入 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">🍎 今日营养摄入</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-              <div class="text-2xl font-bold text-red-600 dark:text-red-400">
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">🍎 今日营养摄入</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="text-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+              <div class="text-xl font-bold text-red-600 dark:text-red-400">
                 {{ userStore.todayNutritionSummary.calories }}
               </div>
               <div class="text-sm text-fg-muted">热量 (kcal)</div>
             </div>
-            <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-              <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <div class="text-xl font-bold text-blue-600 dark:text-blue-400">
                 {{ userStore.todayNutritionSummary.protein }}
               </div>
               <div class="text-sm text-fg-muted">蛋白质 (g)</div>
             </div>
-            <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-              <div class="text-2xl font-bold text-green-600 dark:text-green-400">
+            <div class="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <div class="text-xl font-bold text-green-600 dark:text-green-400">
                 {{ userStore.todayNutritionSummary.carbs }}
               </div>
               <div class="text-sm text-fg-muted">碳水 (g)</div>
             </div>
-            <div class="text-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-              <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
+            <div class="text-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+              <div class="text-xl font-bold text-yellow-600 dark:text-yellow-400">
                 {{ userStore.todayNutritionSummary.fat }}
               </div>
               <div class="text-sm text-fg-muted">脂肪 (g)</div>
@@ -55,8 +55,8 @@
           </div>
           
           <!-- 营养目标对比 -->
-          <div v-if="userStore.nutritionGoals" class="mt-6">
-            <h4 class="text-lg font-medium text-fg mb-3">目标达成情况</h4>
+          <div v-if="userStore.nutritionGoals" class="mt-4">
+            <h4 class="text-base font-medium text-fg mb-2.5">目标达成情况</h4>
             <div class="space-y-3">
               <div>
                 <div class="flex justify-between text-sm mb-1">
@@ -111,26 +111,26 @@
         </div>
 
         <!-- 今日饮食记录 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">🍽️ 今日饮食记录</h3>
-          <div v-if="userStore.todayFoodRecords.length === 0" class="text-center py-8 text-fg-muted">
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">🍽️ 今日饮食记录</h3>
+          <div v-if="userStore.todayFoodRecords.length === 0" class="text-center py-6 text-fg-muted text-sm">
             还没有记录今天的饮食
           </div>
-          <div v-else class="space-y-3">
+          <div v-else class="space-y-2.5">
             <div 
               v-for="record in userStore.todayFoodRecords" 
               :key="record.id"
-              class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              class="flex justify-between items-center p-2.5 bg-gray-50 dark:bg-gray-800 rounded-lg"
             >
               <div>
                 <div class="font-medium text-fg">{{ record.foodName }}</div>
-                <div class="text-sm text-fg-muted">
+                <div class="text-xs text-fg-muted">
                   {{ record.amount }}g · {{ getMealTypeText(record.mealType) }}
                 </div>
               </div>
               <div class="text-right">
                 <div class="font-medium text-fg">{{ record.calories }}kcal</div>
-                <div class="text-sm text-fg-muted">
+                <div class="text-xs text-fg-muted">
                   P:{{ record.protein }}g C:{{ record.carbs }}g F:{{ record.fat }}g
                 </div>
               </div>
@@ -139,26 +139,26 @@
         </div>
 
         <!-- 身体数据历史 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">📏 身体数据历史</h3>
-          <div v-if="userStore.bodyData.length === 0" class="text-center py-8 text-fg-muted">
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">📏 身体数据历史</h3>
+          <div v-if="userStore.bodyData.length === 0" class="text-center py-6 text-fg-muted text-sm">
             还没有身体数据记录
           </div>
-          <div v-else class="space-y-3">
+          <div v-else class="space-y-2.5">
             <div 
               v-for="data in userStore.bodyData.slice(0, 5)" 
               :key="data.id"
-              class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              class="flex justify-between items-center p-2.5 bg-gray-50 dark:bg-gray-800 rounded-lg"
             >
               <div>
                 <div class="font-medium text-fg">
                   {{ data.height }}cm · {{ data.weight }}kg · {{ data.age }}岁
                 </div>
-                <div class="text-sm text-fg-muted">
+                <div class="text-xs text-fg-muted">
                   {{ getGenderText(data.gender) }} · {{ getActivityLevelText(data.activityLevel) }} · {{ getGoalText(data.goal) }}
                 </div>
               </div>
-              <div class="text-sm text-fg-muted">
+              <div class="text-xs text-fg-muted">
                 {{ formatDate(data.recordedAt) }}
               </div>
             </div>
@@ -166,26 +166,26 @@
         </div>
 
         <!-- 训练记录 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">💪 今日训练记录</h3>
-          <div v-if="userStore.workoutRecords.length === 0" class="text-center py-8 text-fg-muted">
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">💪 今日训练记录</h3>
+          <div v-if="userStore.workoutRecords.length === 0" class="text-center py-6 text-fg-muted text-sm">
             还没有记录今天的训练
           </div>
-          <div v-else class="space-y-3">
+          <div v-else class="space-y-2.5">
             <div 
               v-for="record in userStore.workoutRecords" 
               :key="record.id"
-              class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              class="flex justify-between items-center p-2.5 bg-gray-50 dark:bg-gray-800 rounded-lg"
             >
               <div>
                 <div class="font-medium text-fg">{{ record.workoutType }}</div>
-                <div class="text-sm text-fg-muted">
+                <div class="text-xs text-fg-muted">
                   {{ record.duration }}分钟 · {{ record.exercises.length }}个动作
                 </div>
               </div>
               <div class="text-right">
                 <div class="font-medium text-fg">{{ record.calories }}kcal</div>
-                <div class="text-sm text-fg-muted">
+                <div class="text-xs text-fg-muted">
                   {{ formatTime(record.recordedAt) }}
                 </div>
               </div>
@@ -194,23 +194,23 @@
         </div>
 
         <!-- 快速操作 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">⚡ 快速操作</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <button @click="showAddFoodModal = true" class="p-4 bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-colors">
-              <div class="text-2xl mb-2">🍎</div>
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">⚡ 快速操作</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button @click="showAddFoodModal = true" class="p-3 bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-colors text-sm">
+              <div class="text-xl mb-1.5">🍎</div>
               <div class="text-sm font-medium text-fg">添加饮食</div>
             </button>
-            <button @click="showAddWorkoutModal = true" class="p-4 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors">
-              <div class="text-2xl mb-2">💪</div>
+            <button @click="showAddWorkoutModal = true" class="p-3 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors text-sm">
+              <div class="text-xl mb-1.5">💪</div>
               <div class="text-sm font-medium text-fg">记录训练</div>
             </button>
-            <button @click="showAddBodyDataModal = true" class="p-4 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 rounded-lg transition-colors">
-              <div class="text-2xl mb-2">📏</div>
+            <button @click="showAddBodyDataModal = true" class="p-3 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 rounded-lg transition-colors text-sm">
+              <div class="text-xl mb-1.5">📏</div>
               <div class="text-sm font-medium text-fg">更新身体数据</div>
             </button>
-            <router-link to="/user/settings" class="p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-center">
-              <div class="text-2xl mb-2">⚙️</div>
+            <router-link to="/user/settings" class="p-3 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-center text-sm">
+              <div class="text-xl mb-1.5">⚙️</div>
               <div class="text-sm font-medium text-fg">设置</div>
             </router-link>
           </div>
@@ -220,9 +220,9 @@
 
     <!-- 添加饮食模态框 -->
     <div v-if="showAddFoodModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">添加饮食记录</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">添加饮食记录</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">食物名称</label>
             <input 
@@ -250,7 +250,7 @@
               <option value="snack">加餐</option>
             </select>
           </div>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block text-sm font-medium text-fg-muted mb-2">热量 (kcal)</label>
               <input 
@@ -289,11 +289,11 @@
             </div>
           </div>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="addFoodRecord" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="addFoodRecord" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             添加
           </button>
-          <button @click="showAddFoodModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+          <button @click="showAddFoodModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             取消
           </button>
         </div>
@@ -302,9 +302,9 @@
 
     <!-- 添加训练模态框 -->
     <div v-if="showAddWorkoutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">添加训练记录</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">添加训练记录</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">训练类型</label>
             <input 
@@ -342,11 +342,11 @@
             ></textarea>
           </div>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="addWorkoutRecord" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="addWorkoutRecord" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             添加
           </button>
-          <button @click="showAddWorkoutModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+          <button @click="showAddWorkoutModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             取消
           </button>
         </div>
@@ -355,9 +355,9 @@
 
     <!-- 添加身体数据模态框 -->
     <div v-if="showAddBodyDataModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">更新身体数据</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">更新身体数据</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">身高 (cm)</label>
             <input 
@@ -386,11 +386,11 @@
             />
           </div>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="addBodyData" class="flex-1 bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="addBodyData" class="flex-1 bg-purple-500 hover:bg-purple-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             更新
           </button>
-          <button @click="showAddBodyDataModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+          <button @click="showAddBodyDataModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             取消
           </button>
         </div>
@@ -556,7 +556,7 @@ onMounted(async () => {
 
 <style scoped>
 .user-data-page {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 72px);
   background-color: var(--color-background);
 }
 </style>

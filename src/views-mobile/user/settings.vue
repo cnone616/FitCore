@@ -1,30 +1,30 @@
 <template>
   <div class="user-settings-page">
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-3 py-6">
       <!-- 页面标题和主题切换器 -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
         <div class="flex items-center gap-3">
           <ThemeSwitcher />
         </div>
       </div>
       <!-- 加载状态 -->
-      <div v-if="userStore.loading" class="text-center py-8">
+      <div v-if="userStore.loading" class="text-center py-6">
         <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         <p class="mt-2 text-fg-muted">加载中...</p>
       </div>
 
       <!-- 错误提示 -->
-      <div v-if="userStore.error" class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
+      <div v-if="userStore.error" class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3.5 mb-5">
         <p class="text-red-600 dark:text-red-400">{{ userStore.error }}</p>
         <button @click="userStore.clearError()" class="mt-2 text-sm text-red-500 hover:text-red-700">关闭</button>
       </div>
 
       <!-- 未登录状态 -->
-      <div v-if="!userStore.isLoggedIn" class="text-center py-12">
-        <div class="text-6xl mb-4">👤</div>
-        <h2 class="text-2xl font-semibold text-fg mb-4">还没有用户信息</h2>
-        <p class="text-fg-muted mb-6">创建你的用户档案，开始记录你的健身数据</p>
-        <button @click="showCreateUserModal = true" class="bg-primary hover:bg-primary-dark text-on-primary px-6 py-3 rounded-lg transition-colors">
+      <div v-if="!userStore.isLoggedIn" class="text-center py-9">
+        <div class="text-5xl mb-3">👤</div>
+        <h2 class="text-xl font-semibold text-fg mb-3">还没有用户信息</h2>
+        <p class="text-fg-muted mb-5 text-sm">创建你的用户档案，开始记录你的健身数据</p>
+        <button @click="showCreateUserModal = true" class="bg-primary hover:bg-primary-dark text-on-primary px-4 py-2.5 rounded-lg transition-colors text-sm">
           创建用户档案
         </button>
       </div>
@@ -32,9 +32,9 @@
       <!-- 已登录状态 -->
       <div v-else class="max-w-2xl mx-auto">
         <!-- 用户信息与身体数据卡片 -->
-        <div class="bg-surface rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-semibold text-fg mb-4">👤 个人信息</h3>
-          <div class="space-y-4">
+        <div class="bg-surface rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold text-fg mb-3">👤 个人信息</h3>
+          <div class="space-y-3">
             <!-- 基本信息 -->
             <div>
               <label class="block text-sm font-medium text-fg-muted mb-2">姓名</label>
@@ -47,7 +47,7 @@
             </div>
             
             <!-- 身体数据 -->
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-3">
               <div>
                 <label class="block text-sm font-medium text-fg-muted mb-2">身高 (cm)</label>
                 <input 
@@ -68,7 +68,7 @@
               </div>
             </div>
             
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-3">
               <div>
                 <label class="block text-sm font-medium text-fg-muted mb-2">年龄</label>
                 <input 
@@ -134,7 +134,7 @@
               </div>
             </div>
             
-            <button @click="saveUserData" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition-colors">
+            <button @click="saveUserData" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-1.5 rounded-lg transition-colors text-sm">
               保存信息
             </button>
           </div>
@@ -145,9 +145,9 @@
     </div>
     <!-- 创建用户模态框 -->
     <div v-if="showCreateUserModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">创建用户档案</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">创建用户档案</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">用户名</label>
             <input 
@@ -167,11 +167,11 @@
             />
           </div>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="createUser" class="flex-1 bg-primary hover:bg-primary-dark text-on-primary py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="createUser" class="flex-1 bg-primary hover:bg-primary-dark text-on-primary py-1.5 rounded-lg transition-colors text-sm">
             创建
           </button>
-          <button @click="showCreateUserModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+          <button @click="showCreateUserModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             取消
           </button>
         </div>
@@ -181,9 +181,9 @@
 
     <!-- 营养目标模态框 -->
     <div v-if="showNutritionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">营养目标</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">营养目标</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">每日热量 (kcal)</label>
             <input 
@@ -221,11 +221,11 @@
             />
           </div>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="setNutritionGoals" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="setNutritionGoals" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             保存
           </button>
-          <button @click="showNutritionModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+          <button @click="showNutritionModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             取消
           </button>
         </div>
@@ -234,9 +234,9 @@
 
     <!-- 导入数据模态框 -->
     <div v-if="showImportModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-surface rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 class="text-xl font-semibold text-fg mb-4">导入数据</h3>
-        <div class="space-y-4">
+      <div class="bg-surface rounded-lg p-4 w-full max-w-md mx-4">
+        <h3 class="text-lg font-semibold text-fg mb-3">导入数据</h3>
+        <div class="space-y-3">
           <div>
             <label class="block text-sm font-medium text-fg-muted mb-2">选择文件</label>
             <input 
@@ -251,8 +251,8 @@
             请选择之前导出的 JSON 数据文件
           </p>
         </div>
-        <div class="flex gap-3 mt-6">
-          <button @click="showImportModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors">
+        <div class="flex gap-2.5 mt-5">
+          <button @click="showImportModal = false" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-1.5 rounded-lg transition-colors text-sm">
             关闭
           </button>
         </div>
