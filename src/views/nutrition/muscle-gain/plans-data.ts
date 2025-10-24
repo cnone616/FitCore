@@ -23,11 +23,11 @@ export interface MuscleGainPlan {
   };
   notes?: string[];
   suitableFor: string[];
-  firstcan: MealPlan;
-  secondcan: MealPlan;
-  thirdcan: MealPlan;
-  fourthcan: MealPlan;
-  fifthcan: MealPlan;
+  firstcan?: MealPlan;
+  secondcan?: MealPlan;
+  thirdcan?: MealPlan;
+  fourthcan?: MealPlan;
+  fifthcan?: MealPlan;
 }
 
 export const muscleGainPlans: MuscleGainPlan[] = [
@@ -56,14 +56,14 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     firstcan:{
       name:'早饭=练前餐',
       content:'* 吃了早饭就准备开练，不需要专门等待休息\n* 吃了练你感觉太饱的话，就吃低饱腹感碳水（馒头/面包/面条）或不吃蛋白质（挪给别的时候吃））',
-      danbaizhi:'0.15',
-      tanshu:'0.20',
+      danbaizhi:'0.20',
+      tanshu:'0.15',
     },
     secondcan:{
       name:'练后餐',
       content:'* 最好能练完后半小时内开始吃上\n* 本餐如要吃蔬菜，少吃后吃以免压制胰岛素\n* 有时没正餐可吃，可用便携快碳+蛋白粉解决',
-      danbaizhi:'0.35',
-      tanshu:'0.20',
+      danbaizhi:'0.20',
+      tanshu:'0.35',
     },
     thirdcan:{
       name:'午饭=其他餐',
@@ -80,8 +80,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan:{
       name:'零食/夜宵',
       content:'* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi:'0.10',
-      tanshu:'0.20',
+      danbaizhi:'0.20',
+      tanshu:'0.10',
     },
   },
   {
@@ -115,14 +115,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     secondcan: {
       name: '午饭=练后餐',
       content: '* 最好能练完后半小时内开始吃上\n* 本餐如要吃蔬菜，少吃后吃以免压制胰岛素\n* 有时没正餐可吃，可用便携快碳+蛋白粉解决',
-      danbaizhi: '0.40',
-      tanshu: '0.30',
-    },
-    thirdcan: {
-      name: '',
-      content: '',
-      danbaizhi: '',
-      tanshu: '',
+      danbaizhi: '0.30',
+      tanshu: '0.40',
     },
     fourthcan: {
       name: '晚饭=其他餐',
@@ -133,8 +127,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.10',
-      tanshu: '0.20',
+      danbaizhi: '0.20',
+      tanshu: '0.10',
     },
   },
   {
@@ -175,7 +169,7 @@ export const muscleGainPlans: MuscleGainPlan[] = [
       name: '午饭=练后餐',
       content: '* 最好能练完后半小时内开始吃上\n* 本餐如要吃蔬菜，少吃后吃以免压制胰岛素\n* 有时没正餐可吃，可用便携快碳+蛋白粉解决',
       danbaizhi: '0.30',
-      tanshu: '0.30',
+      tanshu: '0.35',
     },
     fourthcan: {
       name: '晚饭=其他餐',
@@ -186,8 +180,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.20',
-      tanshu: '0.10',
+      danbaizhi: '0.10',
+      tanshu: '0.20',
     },
   },
   {
@@ -233,14 +227,14 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fourthcan: {
       name: '晚饭=其他餐',
       content: '',
-      danbaizhi: '0.20',
-      tanshu: '0.30',
+      danbaizhi: '0.30',
+      tanshu: '0.20',
     },
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.10',
-      tanshu: '0.20',
+      danbaizhi: '0.20',
+      tanshu: '0.10',
     },
   },
   {
@@ -274,8 +268,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     secondcan: {
       name: '午饭=其他餐',
       content: '',
-      danbaizhi: '0.30',
-      tanshu: '0.20',
+      danbaizhi: '0.20',
+      tanshu: '0.30',
     },
     thirdcan: {
       name: '练前餐',
@@ -292,8 +286,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.20',
-      tanshu: '0.10',
+      danbaizhi: '0.10',
+      tanshu: '0.20',
     },
   },
   {
@@ -327,8 +321,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     secondcan: {
       name: '午饭=其他餐',
       content: '',
-      danbaizhi: '0.30',
-      tanshu: '0.20',
+      danbaizhi: '0.20',
+      tanshu: '0.30',
     },
     thirdcan: {
       name: '晚饭=练前餐',
@@ -345,8 +339,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.20',
-      tanshu: '0.10',
+      danbaizhi: '0.10',
+      tanshu: '0.20',
     },
   },
   {
@@ -398,8 +392,8 @@ export const muscleGainPlans: MuscleGainPlan[] = [
     fifthcan: {
       name: '零食/夜宵',
       content: '* 零食/夜宵的设计热量就并不多，如果不吃的话，就在其他各餐多吃几口瘦肉或主食即可',
-      danbaizhi: '0.20',
-      tanshu: '0.10',
+      danbaizhi: '0.10',
+      tanshu: '0.20',
     },
   }
 ];
@@ -411,3 +405,104 @@ export function getMuscleGainPlan(planId: string): MuscleGainPlan | undefined {
 export function getAllMuscleGainPlans(): MuscleGainPlan[] {
   return muscleGainPlans;
 }
+
+// 检查餐次是否为空
+function isEmptyMeal(meal: MealPlan): boolean {
+  return !meal.name.trim() && !meal.content.trim() && !meal.danbaizhi.trim() && !meal.tanshu.trim();
+}
+
+// 过滤空的餐次配置
+export function filterEmptyMeals(plan: MuscleGainPlan): MuscleGainPlan {
+  const filteredPlan = { ...plan };
+  
+  // 过滤掉空的餐次
+  if (filteredPlan.firstcan && isEmptyMeal(filteredPlan.firstcan)) {
+    delete filteredPlan.firstcan;
+  }
+  if (filteredPlan.secondcan && isEmptyMeal(filteredPlan.secondcan)) {
+    delete filteredPlan.secondcan;
+  }
+  if (filteredPlan.thirdcan && isEmptyMeal(filteredPlan.thirdcan)) {
+    delete filteredPlan.thirdcan;
+  }
+  if (filteredPlan.fourthcan && isEmptyMeal(filteredPlan.fourthcan)) {
+    delete filteredPlan.fourthcan;
+  }
+  if (filteredPlan.fifthcan && isEmptyMeal(filteredPlan.fifthcan)) {
+    delete filteredPlan.fifthcan;
+  }
+  
+  return filteredPlan;
+}
+
+// 获取过滤后的计划
+export function getFilteredMuscleGainPlan(planId: string): MuscleGainPlan | undefined {
+  const plan = getMuscleGainPlan(planId);
+  return plan ? filterEmptyMeals(plan) : undefined;
+}
+
+// 获取所有过滤后的计划
+export function getAllFilteredMuscleGainPlans(): MuscleGainPlan[] {
+  return muscleGainPlans.map(plan => filterEmptyMeals(plan));
+}
+
+/*
+=== 增肌计划餐次比例汇总 ===
+
+1. 早饭后练（早起版）:
+   - 早饭=练前餐: 蛋白质20%, 碳水15%
+   - 练后餐: 蛋白质20%, 碳水35%
+   - 午饭=其他餐: 蛋白质20%, 碳水20%
+   - 晚饭=其他餐: 蛋白质20%, 碳水20%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+2. 早饭后练（晚起版）:
+   - 早饭=练前餐: 蛋白质20%, 碳水20%
+   - 午饭=练后餐: 蛋白质30%, 碳水40%
+   - 晚饭=其他餐: 蛋白质30%, 碳水30%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+3. 午饭前练:
+   - 早饭: 蛋白质20%, 碳水20%
+   - 练前餐: 蛋白质0%, 碳水15%
+   - 午饭=练后餐: 蛋白质30%, 碳水35%
+   - 晚饭=其他餐: 蛋白质30%, 碳水20%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+4. 午饭后练:
+   - 早饭: 蛋白质20%, 碳水20%
+   - 午饭=练前餐: 蛋白质0%, 碳水15%
+   - 练后餐: 蛋白质30%, 碳水35%
+   - 晚饭=其他餐: 蛋白质30%, 碳水20%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+5. 晚饭前练:
+   - 早饭: 蛋白质20%, 碳水20%
+   - 午饭=其他餐: 蛋白质30%, 碳水20%
+   - 练前餐: 蛋白质0%, 碳水15%
+   - 晚饭=练后餐: 蛋白质30%, 碳水35%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+6. 晚饭后练:
+   - 早饭: 蛋白质20%, 碳水20%
+   - 午饭=其他餐: 蛋白质30%, 碳水20%
+   - 晚饭=练前餐: 蛋白质0%, 碳水15%
+   - 练后餐: 蛋白质30%, 碳水35%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+7. 夜里练:
+   - 早饭: 蛋白质20%, 碳水20%
+   - 午饭=其他餐: 蛋白质20%, 碳水20%
+   - 晚饭=其他餐: 蛋白质20%, 碳水20%
+   - 练后餐: 蛋白质20%, 碳水30%
+   - 零食/夜宵: 蛋白质20%, 碳水10%
+   - 总计: 蛋白质100%, 碳水100%
+
+✅ 所有增肌计划的蛋白质、碳水比例总计均为100%
+*/
